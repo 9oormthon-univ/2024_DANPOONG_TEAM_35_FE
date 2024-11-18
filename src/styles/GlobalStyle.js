@@ -126,6 +126,33 @@ const GlobalStyle = createGlobalStyle`
     input:focus {
         outline: none;
     }
+
+    :root{
+        // Colors
+        --color-red: #E71825;
+        --color-light-gray: #D8D8D8;
+        --color-gray: #999999;
+        --color-dark-blue: #246BEB;
+        --color-bg-blue: #F4F7FA;
+        --color-white: #FFFFFF;
+        --color-black: #000000;
+
+        // Font size
+        --font-large: 24px;
+        --font-medium: 20px;
+        --font-regular: 16px;
+        --font-small: 14px;
+        --font-semi-micro: 12px;
+        --font-micro: 10px;
+
+        // Font weight
+        --weight-extra-bold: 800;
+        --weight-bold: 700;
+        --weight-semi-bold: 600;
+        --weight-medium: 500;
+        --weight-regular: 400;
+        --weight-light: 300;
+    }
 `;
 
 export default GlobalStyle;
