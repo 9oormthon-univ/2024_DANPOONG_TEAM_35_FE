@@ -7,10 +7,10 @@ export const Container = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: var(--color-white);
   z-index: 1000;
 
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--color-light-gray);
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -26,15 +26,15 @@ export const Nav = styled.nav`
 
 export const NavItem = styled(Link)`
   width: 70px;
-  background-color: #fff;
+  background-color: var(--color-white);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
-  color: gray;
-  font-weight: 600;
+  color: var(--color-gray);
+  font-weight: var(--weight-bold);
   font-size: 12px;
 `;
 

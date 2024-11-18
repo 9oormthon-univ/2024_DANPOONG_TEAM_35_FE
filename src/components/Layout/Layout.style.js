@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 100%;
+  width: 100vw;
   height: 100vh;
 
   position: relative;
@@ -10,9 +10,9 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  padding-top: 60px;
+  padding-top: 40px;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  color: #000;
+  color: var(--color-black);
 `;
