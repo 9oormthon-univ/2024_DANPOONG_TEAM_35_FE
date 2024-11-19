@@ -8,7 +8,7 @@ const Header = () => {
       <Nav>
         <Logo src={LogoImage} alt="Logo" />
         <NavItemContainer path={"/"}>채용공고</NavItemContainer>
-        <NavItemContainer path={"/"}>자기소개서</NavItemContainer>
+        <NavItemContainer path={"/sheet-list"}>자기소개서</NavItemContainer>
         <NavItemContainer path={"/"}>AI 면접</NavItemContainer>
         <NavItemContainer path={"/"}>도식화</NavItemContainer>
         <NavItemContainer path={"/"}>
