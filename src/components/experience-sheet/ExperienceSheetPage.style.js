@@ -2,6 +2,18 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   background-color: var(--color-bg-blue);
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: pink;
+  }
 `;
 
 export const Container = styled.div`
@@ -13,8 +25,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  overflow: auto;
 `;
 
 export const TitleText = styled.p`
@@ -39,11 +49,4 @@ export const SheetHorizonContainer = styled.div`
 
   padding: 10px;
   gap: 20px;
-`;
-
-export const SizedBox = styled.div`
-  width: 100%;
-  height: 80px;
-
-  background-color: pink;
 `;

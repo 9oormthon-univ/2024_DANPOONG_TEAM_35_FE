@@ -5,7 +5,6 @@ import {
   TitleText,
   SheetContainer,
   SheetHorizonContainer,
-  SizedBox,
 } from "/src/components/experience-sheet/ExperienceSheetPage.style.js";
 import SheetCard from "/src/components/experience-sheet/SheetCard";
 import LetterCard from "../components/experience-sheet/LetterCard";
@@ -31,7 +30,7 @@ function ExperienceSheetPage() {
             <PlusSheetCard />
           </SheetHorizonContainer>
         </SheetContainer>
-        <SizedBox />
+
         <TitleText>업계 소식 목록</TitleText>
         <SheetContainer>
           <SheetHorizonContainer>
@@ -47,7 +46,7 @@ function ExperienceSheetPage() {
             <PlusSheetCard />
           </SheetHorizonContainer>
         </SheetContainer>
-        <SizedBox />
+
         <TitleText>자기소개서 작성</TitleText>
         <SheetContainer>
           <SheetHorizonContainer>
