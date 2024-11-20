@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ModalContent from "./Modal/ModalContent";
 
 export default function ExperienceModal() {
   return (
@@ -14,18 +15,18 @@ export default function ExperienceModal() {
             <Date>날짜를 입력해주세요</Date>
           </TopContainer>
           <MainContainer>
-            <ContentContainer>
-              <Text>문제상황</Text>
-              <Content placeholder="내용을 입력해주세요 (200자 제한)" />
-            </ContentContainer>
-            <ContentContainer>
-              <Text>해결방법</Text>
-              <Content placeholder="내용을 입력해주세요 (200자 제한)" />
-            </ContentContainer>
-            <ContentContainer>
-              <Text>결과 (성과, 나의 비중)</Text>
-              <Content placeholder="내용을 입력해주세요 (200자 제한)" />
-            </ContentContainer>
+            <ModalContent
+              text="문제상황"
+              placeholder="내용을 입력해주세요 (200자 제한)"
+            />
+            <ModalContent
+              text="해결방법"
+              placeholder="내용을 입력해주세요 (200자 제한)"
+            />
+            <ModalContent
+              text="결과 (성과, 나의 비중)"
+              placeholder="내용을 입력해주세요 (200자 제한)"
+            />
           </MainContainer>
           <Keyword>선택 키워드</Keyword>
           <Keyword>추천 키워드</Keyword>
@@ -107,34 +108,6 @@ const MainContainer = styled.div`
   height: 400px;
   border: 1px solid #717171;
   border-radius: 8px;
-`;
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-  gap: 8px;
-`;
-
-const Text = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-  color: #000000;
-`;
-
-const Content = styled.textarea`
-  height: 60px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  transition: border-color 0.2s ease;
-  outline: none;
-  resize: none;
-
-  &:focus {
-    border: 1px solid #717171;
-  }
 `;
 
 const Keyword = styled.div`
