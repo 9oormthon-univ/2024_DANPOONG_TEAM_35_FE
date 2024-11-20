@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
 
-function PlusSheetCard() {
+function HorizonPlusSheetCard() {
   return (
     <Container>
       <PlusIcon />
     </Container>
   );
 }
-export default PlusSheetCard;
+export default HorizonPlusSheetCard;
 
 const Container = styled.div`
-  width: 200px;
-  height: 100px;
+  width: 470px;
+
   background-color: white;
   border: 1px solid var(--color-light-gray);
   border-radius: 10px;

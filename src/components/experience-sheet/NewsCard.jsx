@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IoIosArrowDropright } from "react-icons/io";
 
-function SheetCard() {
+function NewsCard() {
   return (
     <Container>
       <TopContainer>
@@ -21,7 +21,7 @@ function SheetCard() {
     </Container>
   );
 }
-export default SheetCard;
+export default NewsCard;
 
 const Container = styled.div`
   width: 200px;
@@ -79,7 +79,7 @@ const TitleTag = styled.div`
   font-weight: var(--weight-bold);
   padding: 5px;
 
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-dark-mint);
   color: white;
 `;
 
@@ -87,12 +87,11 @@ const Tag = styled.div`
   width: fit-content;
   border-radius: 4px;
 
-  font-size: 10px;
   font-weight: var(--weight-medium);
   padding: 5px;
 
   background-color: var(--color-light-blue);
-  color: var(--color-navy);
+  color: var(--color-dark-mint);
 `;
 
 const RightArrow = styled(IoIosArrowDropright)`
