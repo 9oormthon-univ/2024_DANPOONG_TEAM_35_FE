@@ -1,13 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function ModalNewsList({ title, content }) {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked((prev) => !prev);
+  };
   return (
     <>
-      <NewsList>
+      <NewsList isChecked={isChecked}>
         <NewsListTitle>
           <p>{title}</p>
-          <Checkbox />
+          <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
         </NewsListTitle>
         <NewsListContent>{content}</NewsListContent>
       </NewsList>
@@ -20,7 +26,7 @@ const NewsList = styled.div`
   margin-bottom: 8px;
   flex: 1;
   height: 80px;
-  border: 1px solid #717171;
+  border: 1px solid ${(props) => (props.isChecked ? "#246BEB" : "#717171")};
   border-radius: 8px;
   background-color: white;
   font-size: 14px;
