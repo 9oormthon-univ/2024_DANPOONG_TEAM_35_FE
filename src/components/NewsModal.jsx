@@ -4,8 +4,10 @@ import calendarIcon from "../assets/icons/calendar.svg";
 import searchIcon from "../assets/icons/search.svg";
 import dropdownIcon from "../assets/icons/dropdown.svg";
 import ModalBottom from "./Modal/ModalBottom";
+import { format } from "date-fns";
 
 export default function NewsModal() {
+  const todayDate = format(new Date(), "yyyy-MM-dd");
   return (
     <>
       <Container>
@@ -22,10 +24,17 @@ export default function NewsModal() {
               </SearchInputWrapper>
             </TitleContainer>
             <DateBox>
+              <span>{todayDate}</span>
               <CalendarIcon src={calendarIcon} />
             </DateBox>
           </TopContainer>
-          <MainContainer></MainContainer>
+          <MainContainer>
+            <NewsList />
+            <NewsList />
+            <NewsList />
+            <NewsList />
+            <NewsList />
+          </MainContainer>
           <ModalBottom />
         </ModalContainer>
       </Container>
@@ -74,7 +83,7 @@ const TitleContainer = styled.div`
 `;
 
 const Category = styled.div`
-  display: flex; /* Flexbox로 내부 정렬 */
+  display: flex;
   align-items: center;
   padding: 10px;
   font-size: 14px;
@@ -134,7 +143,8 @@ const CalendarIcon = styled.img`
 `;
 
 const MainContainer = styled.div`
+  margin-top: 32px;
   height: 400px;
-  background-color: #d8d8d8;
   border-radius: 8px;
+  overflow: auto;
 `;
