@@ -29,6 +29,10 @@ export default function NewsModal() {
               <CalendarIcon src={calendarIcon} />
             </DateBox>
           </TopContainer>
+          <InfoContainer>
+            <Info>최신 소식 알아보기</Info>
+            <Refresh>새로고침</Refresh>
+          </InfoContainer>
           <MainContainer>
             <ModalNewsList
               title="[학위논문] 웹 레퍼토리와 집중도 연구"
@@ -154,8 +158,28 @@ const CalendarIcon = styled.img`
   top: 26%;
 `;
 
+const InfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  margin-top: 14px;
+`;
+
+const Info = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  color: #828282;
+`;
+
+const Refresh = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  color: #828282;
+  border-bottom: 1px solid #828282;
+`;
+
 const MainContainer = styled.div`
-  margin-top: 32px;
   height: 400px;
   border-radius: 8px;
   overflow: auto;
