@@ -1,9 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 import ModalContent from "./Modal/ModalContent";
 import ModalBottom from "./Modal/ModalBottom";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import { DateRange } from "react-date-range";
+import format from "date-fns/format";
+import { ko } from "date-fns/locale";
 
 export default function ExperienceModal() {
+  const [showDateRange, setShowDateRange] = useState(false);
+  const formatDate = (date) =>
+    date ? format(date, "yyyy-MM-dd") : "날짜를 입력해주세요";
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: "selection",
+    },
+  ]);
+
+  const toggleDateRange = () => {
+    setShowDateRange((prev) => !prev);
+  };
   return (
     <>
       <Container>
@@ -13,7 +33,24 @@ export default function ExperienceModal() {
               <Category>카테고리</Category>
               <TitleInput placeholder="제목을 입력하세요"></TitleInput>
             </TitleContainer>
-            <Date>날짜를 입력해주세요</Date>
+            <DateBox onClick={toggleDateRange}>
+              {state[0].startDate && state[0].endDate
+                ? `${formatDate(state[0].startDate)} -  ${formatDate(
+                    state[0].endDate
+                  )}`
+                : "날짜를 입력해주세요"}
+            </DateBox>
+            {showDateRange && (
+              <DateRangeWrapper>
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => setState([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={state}
+                  locale={ko}
+                />
+              </DateRangeWrapper>
+            )}
           </TopContainer>
           <MainContainer>
             <ModalContent
@@ -57,11 +94,13 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: auto;
 `;
 
 const TopContainer = styled.div`
   display: flex;
   gap: 12px;
+  position: relative;
 `;
 
 const TitleContainer = styled.div`
@@ -89,7 +128,7 @@ const TitleInput = styled.input`
   outline: none;
 `;
 
-const Date = styled.div`
+const DateBox = styled.div`
   padding-left: 8px;
   flex: 1;
   height: 40px;
@@ -98,6 +137,19 @@ const Date = styled.div`
   line-height: 40px;
   font-size: 14px;
   color: #828282;
+  z-index: 2;
+  overflow: hidden;
+`;
+
+const DateRangeWrapper = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const MainContainer = styled.div`
