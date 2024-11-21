@@ -5,6 +5,7 @@ import searchIcon from "../assets/icons/search.svg";
 import dropdownIcon from "../assets/icons/dropdown.svg";
 import ModalBottom from "./Modal/ModalBottom";
 import { format } from "date-fns";
+import ModalNewsList from "./Modal/ModalNewsList";
 
 export default function NewsModal() {
   const todayDate = format(new Date(), "yyyy-MM-dd");
@@ -29,17 +30,22 @@ export default function NewsModal() {
             </DateBox>
           </TopContainer>
           <MainContainer>
-            <NewsList>
-              <NewsListTitle>
-                <p>제목</p>
-                <Checkbox />
-              </NewsListTitle>
-              <NewsListContent>내용</NewsListContent>
-            </NewsList>
-            <NewsList />
-            <NewsList />
-            <NewsList />
-            <NewsList />
+            <ModalNewsList
+              title="[학위논문] 웹 레퍼토리와 집중도 연구"
+              content="이 연구는 굉장해 엄청나"
+            />
+            <ModalNewsList
+              title="[학위논문] 웹 레퍼토리와 집중도 연구"
+              content="이 연구는 굉장해 엄청나"
+            />
+            <ModalNewsList
+              title="[학위논문] 웹 레퍼토리와 집중도 연구"
+              content="이 연구는 굉장해 엄청나"
+            />
+            <ModalNewsList
+              title="[학위논문] 웹 레퍼토리와 집중도 연구"
+              content="이 연구는 굉장해 엄청나"
+            />
           </MainContainer>
           <ModalBottom />
         </ModalContainer>
@@ -153,42 +159,4 @@ const MainContainer = styled.div`
   height: 400px;
   border-radius: 8px;
   overflow: auto;
-`;
-
-const NewsList = styled.div`
-  padding: 8px;
-  margin-bottom: 8px;
-  flex: 1;
-  height: 80px;
-  border: 1px solid #717171;
-  border-radius: 8px;
-  background-color: white;
-  font-size: 14px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-`;
-
-const NewsListTitle = styled.div`
-  flex: 1;
-  display: flex;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 12px;
-  color: black;
-  justify-content: space-between;
-`;
-
-const NewsListContent = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  padding-left: 12px;
-  padding-bottom: 12px;
-  color: #828282;
-`;
-
-const Checkbox = styled.input.attrs({ type: "checkbox" })`
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
 `;
