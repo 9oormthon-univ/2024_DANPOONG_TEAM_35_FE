@@ -8,6 +8,7 @@ import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import { ko } from "date-fns/locale";
+import calendarIcon from "../assets/icons/calendar.svg";
 
 export default function ExperienceModal() {
   const [showDateRange, setShowDateRange] = useState(false);
@@ -39,6 +40,7 @@ export default function ExperienceModal() {
                     state[0].endDate
                   )}`
                 : "날짜를 입력해주세요"}
+              <CalendarIcon src={calendarIcon} />
             </DateBox>
             {showDateRange && (
               <DateRangeWrapper>
@@ -139,6 +141,16 @@ const DateBox = styled.div`
   color: #828282;
   z-index: 2;
   overflow: hidden;
+  align-items: center;
+  position: relative;
+`;
+
+const CalendarIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 8px;
+  top: 26%;
 `;
 
 const DateRangeWrapper = styled.div`
