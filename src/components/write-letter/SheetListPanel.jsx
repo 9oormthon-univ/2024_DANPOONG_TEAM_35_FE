@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import PreviewSheetCard from "./PreviewSheetCard";
+import PreviewNewsCard from "./PreviewNewsCard";
 
 function SheetListPanel() {
   const [selectedButton, setSelectedButton] = useState("sheet");
@@ -52,7 +53,11 @@ function SheetListPanel() {
         ))}
       </TagContainer>
       <PreviewSheetList>
-        <PreviewSheetCard></PreviewSheetCard>
+        {selectedButton === "sheet" ? (
+          <PreviewSheetCard />
+        ) : (
+          <PreviewNewsCard />
+        )}
       </PreviewSheetList>
     </Container>
   );
