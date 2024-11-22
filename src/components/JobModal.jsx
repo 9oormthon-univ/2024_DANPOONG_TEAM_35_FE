@@ -4,16 +4,16 @@ import { categories, subcategories } from "../data/job";
 import ModalBtn from "./Modal/ModalBtn.jsx";
 
 export default function JobModal() {
-  const [selectedCategory, setSelectedCategory] = useState(null); // 카테고리 선택
-  const [selectedSubCategory, setSelectedSubCategory] = useState(null); // 세부 직무 선택
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
   const handleCategorySelect = (categoryName) => {
-    setSelectedCategory(categoryName); // 카테고리 선택
-    setSelectedSubCategory(null); // 세부 직무 초기화
+    setSelectedCategory(categoryName);
+    setSelectedSubCategory(null);
   };
 
   const handleSubCategorySelect = (subCategoryName) => {
-    setSelectedSubCategory(subCategoryName); // 세부 직무 선택
+    setSelectedSubCategory(subCategoryName);
   };
 
   return (
@@ -21,7 +21,6 @@ export default function JobModal() {
       <ModalContainer>
         <ModalTitle>관련 직무 선택</ModalTitle>
         <ContentWrapper>
-          {/* 카테고리 목록 */}
           <Column>
             <ColumnTitle>카테고리</ColumnTitle>
             <ScrollableContent>
@@ -41,7 +40,6 @@ export default function JobModal() {
               ))}
             </ScrollableContent>
           </Column>
-          {/* 서브 카테고리 목록 */}
           <Column>
             <ColumnTitle>세부 카테고리</ColumnTitle>
             <ScrollableContent>
@@ -61,7 +59,6 @@ export default function JobModal() {
               ))}
             </ScrollableContent>
           </Column>
-          {/* 선택된 직무 목록 */}
           <Column>
             <ColumnTitle>선택된 세부 직무</ColumnTitle>
             {selectedSubCategory ? (
@@ -71,7 +68,6 @@ export default function JobModal() {
             )}
           </Column>
         </ContentWrapper>
-        {/* 하단 버튼 */}
         <BtnContainer>
           <ModalBtn text="이전" />
           <ModalBtn text="다음" />
@@ -81,7 +77,6 @@ export default function JobModal() {
   );
 }
 
-// 스타일 컴포넌트 정의
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -151,7 +146,7 @@ const Item = styled.label`
 `;
 
 const Checkbox = styled.input`
-  margin-right: 8px; /* 체크박스와 텍스트 간격 */
+  margin-right: 8px;
   width: 16px;
   height: 16px;
 `;
