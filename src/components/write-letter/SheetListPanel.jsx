@@ -21,13 +21,13 @@ function SheetListPanel() {
         <ToggleContainer>
           <SelectSheet
             onClick={() => handleButtonClick("sheet")}
-            isActive={selectedButton === "sheet"}
+            $isActive={selectedButton === "sheet"}
           >
             경험시트
           </SelectSheet>
           <SelectNews
             onClick={() => handleButtonClick("news")}
-            isActive={selectedButton === "news"}
+            $isActive={selectedButton === "news"}
           >
             업계소식
           </SelectNews>
@@ -44,14 +44,16 @@ function SheetListPanel() {
         ].map((tag) => (
           <Tag
             key={tag}
-            isActive={selectedTag === tag}
+            $isActive={selectedTag === tag}
             onClick={() => handleTagClick(tag)}
           >
             {tag}
           </Tag>
         ))}
       </TagContainer>
-      <PreviewSheetCard></PreviewSheetCard>
+      <PreviewSheetList>
+        <PreviewSheetCard></PreviewSheetCard>
+      </PreviewSheetList>
     </Container>
   );
 }
@@ -91,11 +93,11 @@ const SelectSheet = styled.button`
   border-style: solid;
   border-radius: 15px 0 0 15px;
   background-color: white;
-  color: ${({ isActive }) =>
-    isActive ? "var(--color-dark-blue)" : "var(--color-black)"};
+  color: ${({ $isActive }) =>
+    $isActive ? "var(--color-dark-blue)" : "var(--color-black)"};
 
-  border-color: ${({ isActive }) =>
-    isActive ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
+  border-color: ${({ $isActive }) =>
+    $isActive ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
   font-weight: var(--weight-bold);
 `;
 
@@ -104,10 +106,10 @@ const SelectNews = styled.button`
   border-style: solid;
   border-radius: 0px 15px 15px 0;
   background-color: white;
-  color: ${({ isActive }) =>
-    isActive ? "var(--color-dark-blue)" : "var(--color-black)"};
-  border-color: ${({ isActive }) =>
-    isActive ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
+  color: ${({ $isActive }) =>
+    $isActive ? "var(--color-dark-blue)" : "var(--color-black)"};
+  border-color: ${({ $isActive }) =>
+    $isActive ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
   font-weight: var(--weight-bold);
 `;
 
@@ -132,8 +134,14 @@ const Tag = styled.button`
   font-size: 12px;
   font-weight: var(--weight-semi-bold);
 
-  background-color: ${({ isActive }) =>
-    isActive ? "var(--color-dark-blue)" : "var(--color-bg-blue)"};
-  color: ${({ isActive }) =>
-    isActive ? "var(--color-white)" : "var(--color-dark-blue)"};
+  background-color: ${({ $isActive }) =>
+    $isActive ? "var(--color-dark-blue)" : "var(--color-bg-blue)"};
+  color: ${({ $isActive }) =>
+    $isActive ? "var(--color-white)" : "var(--color-dark-blue)"};
+`;
+
+const PreviewSheetList = styled.div`
+  width: 100%;
+
+  padding: 15px 0;
 `;

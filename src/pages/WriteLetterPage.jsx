@@ -52,7 +52,6 @@ function WriteCoverLetterPage() {
     },
   ]);
 
-  // 각 LetterBox를 참조하는 배열 생성
   const sectionRefs = useRef([]);
 
   const handleTextChange = (id, newText) => {
@@ -63,6 +62,7 @@ function WriteCoverLetterPage() {
     );
   };
 
+  // 목차 클릭 시 특정 세션으로 스크롤
   const handleNavigate = (id) => {
     const section = sectionRefs.current[id - 1];
     if (section) {

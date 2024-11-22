@@ -15,12 +15,7 @@ function LetterBox({ title, subText, text, maxLength, onChange }) {
           </CountLetter>
         </TitleContainer>
         <SubText>{subText}</SubText>
-        <TextBox
-          value={text}
-          onChange={handleChange}
-          maxLength={maxLength}
-          subText={subText}
-        />
+        <TextBox value={text} onChange={handleChange} maxLength={maxLength} />
       </LetterContainer>
     </Container>
   );
