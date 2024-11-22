@@ -17,6 +17,12 @@ function SubHeader() {
 
   return (
     <Container>
+      <TagContainer>
+        {/* <TagType>회사</TagType> */}
+        <Tag># 네이버</Tag>
+        {/* <TagType>직무</TagType> */}
+        <Tag># 프론트엔드 개발자</Tag>
+      </TagContainer>
       <DateText>{currentDate()}</DateText>
       <CompleteButton>작성 완료</CompleteButton>
     </Container>
@@ -40,6 +46,42 @@ const Container = styled.div`
   z-index: 100;
 
   border-bottom: 1px solid var(--color-light-gray);
+`;
+
+const TagContainer = styled.div`
+  display: flex;
+  position: fixed;
+  left: 140px;
+  gap: 10px;
+`;
+
+// const TagType = styled.div`
+//   display: flex;
+//   padding: 5px;
+
+//   border: 1px solid var(--color-gray);
+//   border-radius: 4px;
+//   background-color: white;
+
+//   font-size: 12px;
+//   font-weight: var(--weight-bold);
+
+//   color: var(--color-white);
+//   background-color: var(--color-gray);
+// `;
+
+const Tag = styled.div`
+  display: flex;
+  padding: 5px;
+
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  background-color: white;
+
+  font-size: 12px;
+  font-weight: var(--weight-bold);
+
+  color: var(--color-dark-gray);
 `;
 
 const DateText = styled.div`

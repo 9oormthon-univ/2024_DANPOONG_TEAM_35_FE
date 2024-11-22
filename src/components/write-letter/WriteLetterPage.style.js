@@ -25,4 +25,5 @@ export const PanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-left: 20px;
 `;

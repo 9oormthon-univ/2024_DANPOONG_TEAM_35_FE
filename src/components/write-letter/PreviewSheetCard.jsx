@@ -67,7 +67,7 @@ const Container = styled.div`
   border: 1px solid
     ${(props) =>
       props.$isSelected ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
-  padding: 15px;
+  padding: 12px;
   cursor: pointer;
 `;
 

@@ -67,12 +67,12 @@ export default SheetListPanel;
 
 const Container = styled.div`
   width: 380px;
-  height: 400px;
 
+  position: fixed;
   background-color: var(--color-bg-blue);
   border-radius: 15px;
   border: 0.5px solid var(--color-light-gray);
-  padding: 20px;
+  padding: 15px;
 `;
 
 const TitleText = styled.p`
@@ -88,12 +88,15 @@ const TopContainer = styled.div`
 
 const ToggleContainer = styled.div`
   display: flex;
-  font-size: 12px;
+  font-size: 10px;
 
   overflow-x: auto;
 `;
 
 const SelectSheet = styled.button`
+  display: flex;
+  align-items: center;
+  height: 20px;
   border-width: 1px;
   border-style: solid;
   border-radius: 15px 0 0 15px;
@@ -107,6 +110,9 @@ const SelectSheet = styled.button`
 `;
 
 const SelectNews = styled.button`
+  display: flex;
+  align-items: center;
+  height: 20px;
   border-width: 1px;
   border-style: solid;
   border-radius: 0px 15px 15px 0;
@@ -125,19 +131,21 @@ const TagContainer = styled.div`
 
   overflow-x: auto;
   white-space: nowrap;
-
-  padding: 5px 0;
 `;
 
 const Tag = styled.button`
+  display: flex;
   width: fit-content;
+  height: 20px;
 
   border: 1px solid var(--color-dark-blue);
-  border-radius: 4px;
+  border-radius: 8px;
 
   padding: 7px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: var(--weight-semi-bold);
+  justify-content: center;
+  align-items: center;
 
   background-color: ${({ $isActive }) =>
     $isActive ? "var(--color-dark-blue)" : "var(--color-bg-blue)"};

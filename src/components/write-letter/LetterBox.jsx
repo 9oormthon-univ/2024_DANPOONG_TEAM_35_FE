@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaPen } from "react-icons/fa";
 
 function LetterBox({ title, subText, text, maxLength, onChange }) {
   const handleChange = (e) => {
@@ -11,6 +12,7 @@ function LetterBox({ title, subText, text, maxLength, onChange }) {
         <TitleContainer>
           <TitleText>{title}</TitleText>
           <CountLetter>
+            <PenIcon />
             {text.length} / {maxLength}
           </CountLetter>
         </TitleContainer>
@@ -26,7 +28,7 @@ export default LetterBox;
 const Container = styled.div`
   display: flex;
 
-  padding-left: 140px;
+  padding-left: 180px;
 `;
 
 const LetterContainer = styled.div`
@@ -85,4 +87,9 @@ const TextBox = styled.textarea`
   padding: 10px;
   box-sizing: border-box;
   overflow-y: auto;
+`;
+
+const PenIcon = styled(FaPen)`
+  width: 8px;
+  margin-right: 10px;
 `;
