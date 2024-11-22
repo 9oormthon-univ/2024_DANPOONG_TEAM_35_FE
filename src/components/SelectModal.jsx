@@ -1,43 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import companyIcon from "../assets/icons/company.svg";
 import jobIcon from "../assets/icons/job.svg";
 import ModalBtn from "./Modal/ModalBtn";
+import CompanyModal from "./CompanyModal";
 
-export default function selectModal() {
+export default function SelectModal() {
+  const [currentModal, setCurrentModal] = useState("selectModal");
+
+  const handleNext = () => {
+    setCurrentModal("companyModal");
+  };
+
+  const handleClose = () => {
+    setCurrentModal(null);
+  };
+
   return (
     <>
-      <Container>
-        <ModalContainer>
-          <ModalTitle>지원서 작성 방식</ModalTitle>
-          <MainContainer>
-            <Title>
-              <Icon src={companyIcon} />
-              회사 이름으로
-            </Title>
-            <ETC>
-              자소플 내 등록된 회사를 선택하면 해당 회사에 맞는 추천 키워드 및
-              <br />
-              자소서 작성을 경험해보실 수 있어요
-            </ETC>
-          </MainContainer>
-          <MainContainer>
-            <Title>
-              {" "}
-              <Icon src={jobIcon} />
-              관련된 직무로
-            </Title>
-            <ETC>
-              ex. 마케팅, 프론트엔드 개발자, 컨설팅... <br />
-              직무를 자세히 설정할수록 좋은 퀄리티의 자소서를 받아볼 수 있어요{" "}
-            </ETC>
-          </MainContainer>
-          <BtnContainer>
-            <ModalBtn text="취소" />
-            <ModalBtn text="다음" />
-          </BtnContainer>
-        </ModalContainer>
-      </Container>
+      {currentModal === "selectModal" && (
+        <Container>
+          <ModalContainer>
+            <ModalTitle>지원서 작성 방식</ModalTitle>
+            <MainContainer>
+              <Title>
+                <Icon src={companyIcon} />
+                회사 이름으로
+              </Title>
+              <ETC>
+                자소플 내 등록된 회사를 선택하면 해당 회사에 맞는 추천 키워드 및
+                <br />
+                자소서 작성을 경험해보실 수 있어요
+              </ETC>
+            </MainContainer>
+            <MainContainer>
+              <Title>
+                <Icon src={jobIcon} />
+                관련된 직무로
+              </Title>
+              <ETC>
+                ex. 마케팅, 프론트엔드 개발자, 컨설팅... <br />
+                직무를 자세히 설정할수록 좋은 퀄리티의 자소서를 받아볼 수 있어요
+              </ETC>
+            </MainContainer>
+            <BtnContainer>
+              <ModalBtn text="취소" onClick={handleClose} />
+              <ModalBtn text="다음" onClick={handleNext} />
+            </BtnContainer>
+          </ModalContainer>
+        </Container>
+      )}
+
+      {currentModal === "companyModal" && (
+        <Container>
+          <ModalContainer>
+            <CompanyModal />
+            <BtnContainer>
+              <ModalBtn
+                text="이전"
+                onClick={() => setCurrentModal("selectModal")}
+              />
+              <ModalBtn text="닫기" onClick={handleClose} />
+            </BtnContainer>
+          </ModalContainer>
+        </Container>
+      )}
     </>
   );
 }
@@ -52,18 +79,18 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  gap: 12px;
 `;
+
 const ModalContainer = styled.div`
   width: 440px;
-  height: 480px;
+  height: auto;
   padding: 16px;
   border-radius: 8px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 const ModalTitle = styled.p`

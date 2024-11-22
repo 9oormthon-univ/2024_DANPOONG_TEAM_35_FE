@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ModalBtn({ text }) {
+export default function ModalBtn({ text, onClick }) {
   return (
     <>
-      <Button>{text}</Button>
+      <Button onClick={onClick}>{text}</Button>
     </>
   );
 }
