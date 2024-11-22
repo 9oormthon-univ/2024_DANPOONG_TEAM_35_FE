@@ -7,6 +7,8 @@ export const Background = styled.div`
   display: flex;
   margin-top: 40px;
   margin-left: 80px;
+
+  overflow-x: hidden;
 `;
 
 export const WriteContainer = styled.div`
@@ -21,4 +23,6 @@ export const WriteContainer = styled.div`
 export const PanelContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;

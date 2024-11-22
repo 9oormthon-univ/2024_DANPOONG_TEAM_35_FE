@@ -7,6 +7,7 @@ import {
 } from "/src/components/write-letter/WriteLetterPage.style.js";
 import SheetListPanel from "../components/write-letter/SheetListPanel";
 import IndexNavigator from "../components/write-letter/IndexNavigator";
+import DetailPanel from "../components/write-letter/DetailPanel";
 
 function WriteCoverLetterPage() {
   const [letters, setLetters] = useState([
@@ -89,6 +90,7 @@ function WriteCoverLetterPage() {
       </WriteContainer>
       <PanelContainer>
         <SheetListPanel />
+        <DetailPanel />
       </PanelContainer>
     </Background>
   );

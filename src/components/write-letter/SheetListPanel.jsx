@@ -121,7 +121,7 @@ const TagContainer = styled.div`
   overflow-x: auto;
   white-space: nowrap;
 
-  padding: 20px 0;
+  padding: 5px 0;
 `;
 
 const Tag = styled.button`

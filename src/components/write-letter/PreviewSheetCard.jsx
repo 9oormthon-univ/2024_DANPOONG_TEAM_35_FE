@@ -22,6 +22,12 @@ function PreviewSheetCard() {
       tags: ["스터디", "개발", "협업"],
       $isChecked: false,
     },
+    {
+      id: 4,
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+      $isChecked: false,
+    },
   ]);
 
   const handleCheckboxClick = (id) => {
@@ -61,14 +67,17 @@ export default PreviewSheetCard;
 const Background = styled.div`
   width: 100%;
   display: flex;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: wrap;
+
+  justify-content: center;
 `;
 
 const Container = styled.div`
   width: 140px;
+  height: 40px;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid var(--color-light-gray);
   padding: 15px;
 `;
