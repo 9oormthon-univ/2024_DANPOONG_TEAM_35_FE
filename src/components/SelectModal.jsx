@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import companyIcon from "../assets/icons/company.svg";
 import jobIcon from "../assets/icons/job.svg";
+import ModalBtn from "./Modal/ModalBtn";
 
 export default function selectModal() {
   return (
@@ -32,8 +33,8 @@ export default function selectModal() {
             </ETC>
           </MainContainer>
           <BtnContainer>
-            <Button>취소</Button>
-            <Button>다음</Button>
+            <ModalBtn text="취소" />
+            <ModalBtn text="다음" />
           </BtnContainer>
         </ModalContainer>
       </Container>
@@ -107,37 +108,16 @@ const ETC = styled.p`
   line-height: 24px;
 `;
 
-const BtnContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  margin-top: 20px;
-`;
-
-const Button = styled.button`
-  width: 50%;
-  height: 44px;
-  background-color: ${(props) =>
-    props.children === "다음"
-      ? "#246beb"
-      : props.children === "취소"
-      ? "#EFF5FF"
-      : "#d3d3d3"};
-  color: ${(props) =>
-    props.children === "다음"
-      ? "white"
-      : props.children === "취소"
-      ? "#246BEB"
-      : "#d3d3d3"};
-  border: 1px solid #246beb;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-`;
-
 const Icon = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 8px;
   pointer-events: none;
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 20px;
 `;
