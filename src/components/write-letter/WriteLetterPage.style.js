@@ -1,0 +1,24 @@
+import styled from "styled-components";
+
+export const Background = styled.div`
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  margin-top: 40px;
+  margin-left: 80px;
+`;
+
+export const WriteContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+`;
+
+export const PanelContainer = styled.div`
+  width: 100%;
+  display: flex;
+`;
