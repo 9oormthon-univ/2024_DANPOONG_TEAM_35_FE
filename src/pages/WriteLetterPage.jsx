@@ -8,6 +8,7 @@ import {
 import SheetListPanel from "../components/write-letter/SheetListPanel";
 import IndexNavigator from "../components/write-letter/IndexNavigator";
 import DetailPanel from "../components/write-letter/DetailPanel";
+import SubHeader from "../components/write-letter/SubHeader";
 
 function WriteCoverLetterPage() {
   const [letters, setLetters] = useState([
@@ -72,27 +73,33 @@ function WriteCoverLetterPage() {
   };
 
   return (
-    <Background>
-      <IndexNavigator onNavigate={handleNavigate} />
-      <WriteContainer>
-        {letters.map((letter, index) => (
-          <div key={letter.id} ref={(el) => (sectionRefs.current[index] = el)}>
-            <LetterBox
-              title={letter.title}
-              placeholder={letter.placeholder}
-              subText={letter.subText}
-              text={letter.text}
-              maxLength={letter.maxLength}
-              onChange={(newText) => handleTextChange(letter.id, newText)}
-            />
-          </div>
-        ))}
-      </WriteContainer>
-      <PanelContainer>
-        <SheetListPanel />
-        <DetailPanel />
-      </PanelContainer>
-    </Background>
+    <>
+      <SubHeader />
+      <Background>
+        <IndexNavigator onNavigate={handleNavigate} />
+        <WriteContainer>
+          {letters.map((letter, index) => (
+            <div
+              key={letter.id}
+              ref={(el) => (sectionRefs.current[index] = el)}
+            >
+              <LetterBox
+                title={letter.title}
+                placeholder={letter.placeholder}
+                subText={letter.subText}
+                text={letter.text}
+                maxLength={letter.maxLength}
+                onChange={(newText) => handleTextChange(letter.id, newText)}
+              />
+            </div>
+          ))}
+        </WriteContainer>
+        <PanelContainer>
+          <SheetListPanel />
+          <DetailPanel />
+        </PanelContainer>
+      </Background>
+    </>
   );
 }
 

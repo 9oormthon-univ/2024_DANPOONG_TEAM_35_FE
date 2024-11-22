@@ -5,7 +5,7 @@ export const Background = styled.div`
   height: 100vh;
 
   display: flex;
-  margin-top: 40px;
+  margin-top: 80px;
   margin-left: 80px;
 
   overflow-x: hidden;
