@@ -3,41 +3,72 @@ import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 
 function PreviewSheetCard() {
-  const [isChecked, setIsChecked] = useState(false);
+  const [cards, setCards] = useState([
+    {
+      id: 1,
+      title: "데이터 분석 워크샵",
+      tags: ["워크샵", "리더십", "팀워크"],
+      $isChecked: false,
+    },
+    {
+      id: 2,
+      title: "대한전기학회 워크샵",
+      tags: ["워크샵", "창의성", "문제해결"],
+      $isChecked: false,
+    },
+    {
+      id: 3,
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+      $isChecked: false,
+    },
+  ]);
 
-  const handleCheckboxClick = () => {
-    setIsChecked(!isChecked);
+  const handleCheckboxClick = (id) => {
+    setCards((prevCards) =>
+      prevCards.map((card) =>
+        card.id === id ? { ...card, $isChecked: !card.$isChecked } : card
+      )
+    );
   };
 
   return (
-    <Container>
-      <TopContainer>
-        <TitleText>데이터 분석 워크샵</TitleText>
-        <CheckBox onClick={handleCheckboxClick}>
-          <CheckInput type="checkbox" checked={isChecked} readOnly />
-          <CheckMark isChecked={isChecked}>
-            {isChecked && <FaCheck />}
-          </CheckMark>
-        </CheckBox>
-      </TopContainer>
-      <TagContainer>
-        <TitleTag>워크샵</TitleTag>
-        <Tag>리더십</Tag>
-        <Tag>리더십</Tag>
-        <Tag>리더십</Tag>
-      </TagContainer>
-    </Container>
+    <Background>
+      {cards.map((card) => (
+        <Container key={card.id}>
+          <TopContainer>
+            <TitleText>{card.title}</TitleText>
+            <CheckBox onClick={() => handleCheckboxClick(card.id)}>
+              <CheckInput type="checkbox" checked={card.$isChecked} readOnly />
+              <CheckMark $isChecked={card.$isChecked}>
+                {card.$isChecked && <FaCheck />}
+              </CheckMark>
+            </CheckBox>
+          </TopContainer>
+          <TagContainer>
+            {card.tags.map((tag, index) => (
+              <Tag key={index}>{tag}</Tag>
+            ))}
+          </TagContainer>
+        </Container>
+      ))}
+    </Background>
   );
 }
 
 export default PreviewSheetCard;
 
-const Container = styled.div`
-  width: 160px;
+const Background = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+`;
 
+const Container = styled.div`
+  width: 140px;
   background-color: white;
   border-radius: 12px;
-
   border: 1px solid var(--color-light-gray);
   padding: 15px;
 `;
@@ -77,7 +108,7 @@ const CheckMark = styled.div`
   border: 1px solid var(--color-gray);
   border-radius: 4px;
   background-color: ${(props) =>
-    props.isChecked ? "var(--color-dark-blue)" : "transparent"};
+    props.$isChecked ? "var(--color-dark-blue)" : "transparent"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,30 +124,16 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 6px;
   font-size: 10px;
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
 
-const TitleTag = styled.div`
-  width: fit-content;
-  border-radius: 4px;
-
-  font-weight: var(--weight-bold);
-  padding: 5px;
-
-  background-color: var(--color-dark-blue);
-  color: white;
-`;
-
 const Tag = styled.div`
   width: fit-content;
   border-radius: 4px;
-
   font-weight: var(--weight-medium);
   padding: 5px;
-
   background-color: var(--color-light-blue);
   color: var(--color-navy);
 `;
