@@ -11,10 +11,11 @@ const Header = () => {
         <NavItemContainer path={"/write-letter"}>자기소개서</NavItemContainer>
         <NavItemContainer path={"/"}>AI 면접</NavItemContainer>
         <NavItemContainer path={"/"}>도식화</NavItemContainer>
-        <NavItemContainer path={"/"}>
+        <NavItemContainer path={"/mypage"}>
           <UserIcon />
           마이페이지
         </NavItemContainer>
+        <NavItemContainer path={"/login"}>로그인/회원가입</NavItemContainer>
       </Nav>
     </Container>
   );
