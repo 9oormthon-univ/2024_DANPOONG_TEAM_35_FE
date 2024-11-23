@@ -242,6 +242,7 @@ const EmptyMessage = styled.p`
 
 const TextInput = styled.textarea`
   width: 800px;
+  height: 200px;
   padding: 10px;
   border: none;
   border-radius: 8px 8px 0 0;
