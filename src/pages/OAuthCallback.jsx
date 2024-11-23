@@ -27,11 +27,10 @@ const OAuthCallback = () => {
         const { isSuccess, result } = response.data;
 
         if (isSuccess) {
-          // 닉네임 저장
+          // 사용자 정보 및 토큰 저장
+          localStorage.setItem("accessToken", result.accessToken);
           localStorage.setItem("nickName", result.nickName);
-
-          // 환영 메시지
-          alert(`${result.nickName}님 환영합니다!`);
+          localStorage.setItem("email", result.email);
 
           // 홈 페이지로 이동
           navigate("/");

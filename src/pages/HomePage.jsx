@@ -1,4 +1,5 @@
 import React from "react";
+import homepage0 from "../assets/icons/homepage0.png";
 import homepage1 from "../assets/icons/homepage1.png";
 import homepage2 from "../assets/icons/homepage2.png";
 import homepage3 from "../assets/icons/homepage3.png";
@@ -11,7 +12,10 @@ const HomePage = () => {
         style={{
           width: "100%",
           height: "100vh",
-          background: "#00081F",
+          backgroundImage: `url(${homepage0})`,
+          backgroundSize: "cover", // 배경 이미지를 화면에 맞게 조정
+          backgroundPosition: "center", // 배경 이미지의 위치를 중앙으로 설정
+          backgroundRepeat: "no-repeat", // 이미지를 반복하지 않도록 설정
           position: "relative",
           display: "flex",
           justifyContent: "center",
@@ -26,8 +30,8 @@ const HomePage = () => {
           style={{
             position: "absolute",
             top: "20%",
-            left: "15%",
-            width: "23%",
+            left: "20%",
+            width: "24%",
           }}
         />
 
@@ -50,8 +54,8 @@ const HomePage = () => {
           style={{
             position: "absolute",
             bottom: "20%",
-            right: "10%",
-            width: "22%",
+            right: "18%",
+            width: "23%",
           }}
         />
       </div>
