@@ -53,19 +53,13 @@ export const NavItem = styled(Link)`
     background-color: var(--color-dark-blue);
   }
 
-  /* 마지막 두 아이템 처리 */
-  &:nth-last-of-type(2) {
-    position: fixed;
-    right: 180px; /* 마지막에서 두 번째 아이템 위치 설정 */
-  }
-
   &:last-of-type {
     position: fixed;
     right: 80px; /* 마지막 아이템 위치 설정 */
-  }
 
-  &:nth-last-of-type(-n + 2):hover::after {
-    content: none; /* 마지막 두 네비게이션 아이템 강조선 제거 */
+    &:hover::after {
+      content: none; /* 마지막 네비게이션 아이템 강조선 제거 */
+    }
   }
 `;
 
