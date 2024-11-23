@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import ModalContent from "./Modal/ModalContent";

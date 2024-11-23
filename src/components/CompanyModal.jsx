@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import companyData from "../data/company.js";
 import ModalBtn from "./Modal/ModalBtn";
