@@ -6,12 +6,14 @@ import dropdownIcon from "../assets/icons/dropdown.svg";
 import ModalBottom from "./Modal/ModalBottom";
 import { format } from "date-fns";
 import ModalNewsList from "./Modal/ModalNewsList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function NewsModal({ onClose, onSave }) {
   const todayDate = format(new Date(), "yyyy-MM-dd");
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("카테고리");
+  const [newsList, setNewsList] = useState([]);
 
   const toggleCategory = () => {
     setCategoryOpen((prev) => !prev);
@@ -22,7 +24,20 @@ export default function NewsModal({ onClose, onSave }) {
     setCategoryOpen(false);
   };
 
-  const onSubmitHandler = async () => {};
+  const fetchNewsList = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL}/api/industry-info/view/all`
+      );
+      setNewsList(response.data.result);
+    } catch (error) {
+      console.error("데이터를 불러오는 중 에러 발생:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNewsList();
+  }, []);
   return (
     <>
       <Container>
@@ -58,24 +73,15 @@ export default function NewsModal({ onClose, onSave }) {
             <Refresh>새로고침</Refresh>
           </InfoContainer>
           <MainContainer>
-            <ModalNewsList
-              title="[학위논문] 웹 레퍼토리와 집중도 연구"
-              content="이 연구는 굉장해 엄청나"
-            />
-            <ModalNewsList
-              title="[학위논문] 웹 레퍼토리와 집중도 연구"
-              content="이 연구는 굉장해 엄청나"
-            />
-            <ModalNewsList
-              title="[학위논문] 웹 레퍼토리와 집중도 연구"
-              content="이 연구는 굉장해 엄청나"
-            />
-            <ModalNewsList
-              title="[학위논문] 웹 레퍼토리와 집중도 연구"
-              content="이 연구는 굉장해 엄청나"
-            />
+            {newsList.map((news, index) => (
+              <ModalNewsList
+                key={index}
+                title={news.title}
+                content={news.content}
+              />
+            ))}
           </MainContainer>
-          <ModalBottom onClose={onClose} onSave={onSubmitHandler} />
+          <ModalBottom onClose={onClose} />
         </ModalContainer>
       </Container>
     </>

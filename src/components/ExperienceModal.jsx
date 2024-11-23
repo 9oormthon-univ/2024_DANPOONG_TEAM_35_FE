@@ -20,6 +20,7 @@ export default function ExperienceModal({ onClose }) {
   const [background, setBackground] = useState("");
   const [solution, setSolution] = useState("");
   const [result, setResult] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
   const formatDate = (date) =>
     date ? format(date, "yyyy-MM-dd") : "날짜를 입력해주세요";
@@ -32,19 +33,20 @@ export default function ExperienceModal({ onClose }) {
   ]);
 
   const CategoryData = async () => {
-    const accessToken = localStorage.getItem("accessToken");
+    // const accessToken = localStorage.getItem("accessToken");
     console.log(localStorage.getItem("accessToken"));
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_APP_API_URL}/api/category/list`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
+        `${import.meta.env.VITE_APP_API_URL}/api/category/list`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`,
+        //   },
+        // }
       );
-      setCategories(response.data);
+      console.log(response);
+      setCategories(response.data.result);
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -52,7 +54,9 @@ export default function ExperienceModal({ onClose }) {
 
   const onSubmitHandler = async () => {
     const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
+    // const token =
+    //   "eyJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE1LCJpYXQiOjE3MzIzOTM4OTYsImV4cCI6MTczMjM5NzQ5Nn0.5q7lw7DFgxw6nrorjdvtqTdtYAZ7zSZYC9VTl_HRjn4";
+    console.log(localStorage.getItem("accessToken"));
 
     try {
       const response = await axios.post(
@@ -63,8 +67,8 @@ export default function ExperienceModal({ onClose }) {
           background: background,
           solution: solution,
           result: result,
-          startDate: "2024-11-23",
-          endDate: "2024-11-23",
+          startDate: formatDate(state[0].startDate),
+          endDate: formatDate(state[0].endDate),
           keywordList: [0],
         },
         {
@@ -73,7 +77,7 @@ export default function ExperienceModal({ onClose }) {
           },
         }
       );
-      console.log(response.data);
+      console.log("작성 성공:", response);
     } catch (error) {
       console.log(error);
     }
@@ -87,6 +91,8 @@ export default function ExperienceModal({ onClose }) {
     CategoryData();
   }, []);
 
+  console.log(categories);
+
   return (
     <>
       <Container>
@@ -94,7 +100,6 @@ export default function ExperienceModal({ onClose }) {
           <TopContainer>
             <TitleContainer>
               <Category>
-                카테고리
                 {/* <DropdownIcon src={dropdownIcon} /> */}
                 <select
                   value={selectedCategory}
