@@ -1,5 +1,5 @@
 import homepage3 from "../assets/icons/homepage3.png";
-import homepageGif from "../assets/icons/homepage00.Gif";
+import homepageGif from "../assets/icons/homepage00.gif";
 
 const HomePage = () => {
   return (
