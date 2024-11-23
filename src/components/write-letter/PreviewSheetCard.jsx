@@ -64,7 +64,6 @@ const Background = styled.div`
   overflow-y: scroll;
   box-sizing: border-box;
 
-  /* 스크롤바 스타일 */
   scrollbar-width: thin;
   scrollbar-color: var(--color-dark-gray) var(--color-light-gray);
 
@@ -128,6 +127,11 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 6px;
   font-size: 10px;
+
+  :first-of-type {
+    background-color: var(--color-dark-blue);
+    color: var(--color-light-blue);
+  }
 `;
 
 const Tag = styled.div`
@@ -137,4 +141,5 @@ const Tag = styled.div`
   padding: 5px;
   background-color: var(--color-light-blue);
   color: var(--color-navy);
+  white-space: nowrap;
 `;

@@ -51,6 +51,7 @@ function PreviewNewsCard() {
     </Background>
   );
 }
+
 export default PreviewNewsCard;
 
 const Background = styled.div`
@@ -79,6 +80,7 @@ const Background = styled.div`
     border-radius: 10px;
   }
 `;
+
 const Container = styled.div`
   width: 140px;
   height: 40px;
@@ -126,6 +128,11 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 6px;
   font-size: 10px;
+
+  :first-of-type {
+    background-color: var(--color-dark-mint);
+    color: var(--color-light-blue);
+  }
 `;
 
 const Tag = styled.div`
@@ -135,4 +142,17 @@ const Tag = styled.div`
   padding: 5px;
   background-color: var(--color-light-blue);
   color: var(--color-navy);
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-gray);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-blue);
+    border-radius: 4px;
+  }
 `;
