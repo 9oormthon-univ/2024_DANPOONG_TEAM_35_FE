@@ -100,13 +100,12 @@ const SelectSheet = styled.button`
   height: 20px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 15px 0 0 15px;
+  border-radius: 8px 0 0 8px;
   background-color: white;
   color: ${({ $isActive }) =>
-    $isActive ? "var(--color-dark-blue)" : "var(--color-black)"};
-
+    $isActive ? "var(--color-navy)" : "var(--color-gray)"};
   border-color: ${({ $isActive }) =>
-    $isActive ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
+    $isActive ? "var(--color-navy)" : "var(--color-dark-gray)"};
   font-weight: var(--weight-bold);
 `;
 
@@ -116,12 +115,12 @@ const SelectNews = styled.button`
   height: 20px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 0px 15px 15px 0;
+  border-radius: 0 8px 8px 0;
   background-color: white;
   color: ${({ $isActive }) =>
-    $isActive ? "var(--color-dark-blue)" : "var(--color-black)"};
+    $isActive ? "var(--color-navy)" : "var(--color-gray)"};
   border-color: ${({ $isActive }) =>
-    $isActive ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
+    $isActive ? "var(--color-navy)" : "var(--color-light-gray)"};
   font-weight: var(--weight-bold);
 `;
 
@@ -139,8 +138,8 @@ const Tag = styled.button`
   width: fit-content;
   height: 20px;
 
-  border: 1px solid var(--color-dark-blue);
-  border-radius: 8px;
+  border: 1px solid var(--color-navy);
+  border-radius: 4px;
 
   padding: 7px;
   font-size: 10px;
@@ -149,9 +148,9 @@ const Tag = styled.button`
   align-items: center;
 
   background-color: ${({ $isActive }) =>
-    $isActive ? "var(--color-dark-blue)" : "var(--color-bg-blue)"};
+    $isActive ? "var(--color-navy)" : "var(--color-white)"};
   color: ${({ $isActive }) =>
-    $isActive ? "var(--color-white)" : "var(--color-dark-blue)"};
+    $isActive ? "var(--color-white)" : "var(--color-navy)"};
 `;
 
 const PreviewSheetList = styled.div`

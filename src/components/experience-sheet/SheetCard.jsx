@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { IoIosArrowDropright } from "react-icons/io";
-import { useState } from "react";
 
 function SheetCard() {
-  const [isSelected, setIsSelected] = useState(null);
   return (
     <Container>
       <TopContainer>

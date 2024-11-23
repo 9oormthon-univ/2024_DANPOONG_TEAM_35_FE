@@ -7,23 +7,46 @@ function PreviewNewsCard() {
 
   const cards = [
     {
-      id: 1,
+      id: "news-1",
       title: "데이터 분석 워크샵",
       tags: ["워크샵", "리더십", "팀워크"],
     },
     {
-      id: 2,
+      id: "news-2",
       title: "대한전기학회 워크샵",
       tags: ["워크샵", "창의성", "문제해결"],
     },
-    { id: 3, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 4, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 5, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 6, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 7, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 8, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    {
+      id: "news-3",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "news-4",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "news-5",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "news-6",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "news-7",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "news-8",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
   ];
-
   const isSelected = (card) =>
     selectedNewsCards.some((selected) => selected.id === card.id);
 
@@ -51,6 +74,7 @@ function PreviewNewsCard() {
     </Background>
   );
 }
+
 export default PreviewNewsCard;
 
 const Background = styled.div`
@@ -79,6 +103,7 @@ const Background = styled.div`
     border-radius: 10px;
   }
 `;
+
 const Container = styled.div`
   width: 140px;
   height: 40px;
@@ -126,6 +151,11 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 6px;
   font-size: 10px;
+
+  :first-of-type {
+    background-color: var(--color-dark-mint);
+    color: var(--color-light-blue);
+  }
 `;
 
 const Tag = styled.div`
@@ -135,4 +165,17 @@ const Tag = styled.div`
   padding: 5px;
   background-color: var(--color-light-blue);
   color: var(--color-navy);
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-gray);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-blue);
+    border-radius: 4px;
+  }
 `;
