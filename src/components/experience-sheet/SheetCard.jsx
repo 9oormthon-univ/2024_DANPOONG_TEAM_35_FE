@@ -1,22 +1,23 @@
+import React from "react";
 import styled from "styled-components";
 import { IoIosArrowDropright } from "react-icons/io";
 
-function SheetCard() {
+function SheetCard({ title, subtext, tags }) {
+  const safeTags = Array.isArray(tags) ? tags : [];
+
   return (
     <Container>
       <TopContainer>
-        <TitleText>구름톤 유니브 3기</TitleText>
+        <TitleText>{title}</TitleText>
         <RightArrow />
       </TopContainer>
-      <SubText>
-        구름톤 유니브 3기를 진행하면서 AI가 한 번의 경험정리로 자기소개서
-        작성해주는 플랫폼인 자소플에 참여했습니다!
-      </SubText>
+      <SubText>{subtext}</SubText>
       <TagContainer>
-        <TitleTag>리더십</TitleTag>
-        <Tag>창의력</Tag>
-        <Tag>도전</Tag>
-        <Tag>열정</Tag>
+        {safeTags.length > 0 ? (
+          safeTags.map((tag, index) => <Tag key={index}>{tag}</Tag>)
+        ) : (
+          <Tag>No Tags</Tag>
+        )}
       </TagContainer>
     </Container>
   );
