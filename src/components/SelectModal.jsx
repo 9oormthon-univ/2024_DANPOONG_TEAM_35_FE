@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import companyIcon from "../assets/icons/company.svg";
 import jobIcon from "../assets/icons/job.svg";
