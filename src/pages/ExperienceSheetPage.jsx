@@ -64,10 +64,6 @@ function ExperienceSheetPage() {
         <SheetContainer>
           <SheetHorizonContainer>
             <LetterCard />
-            <LetterCard />
-          </SheetHorizonContainer>
-          <SheetHorizonContainer>
-            <LetterCard />
             <HorizonPlusSheetCard />
           </SheetHorizonContainer>
         </SheetContainer>
