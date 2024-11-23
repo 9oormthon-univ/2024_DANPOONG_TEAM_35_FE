@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { categories, subcategories } from "../data/job";
 import ModalBtn from "./Modal/ModalBtn.jsx";
 
-export default function JobModal() {
+export default function JobModal({ onClose }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
@@ -69,7 +69,7 @@ export default function JobModal() {
           </Column>
         </ContentWrapper>
         <BtnContainer>
-          <ModalBtn text="이전" />
+          <ModalBtn text="이전" onClick={onClose} />
           <ModalBtn text="다음" />
         </BtnContainer>
       </ModalContainer>

@@ -10,6 +10,7 @@ import SheetCard from "/src/components/experience-sheet/SheetCard";
 import LetterCard from "../components/experience-sheet/LetterCard";
 import HorizonPlusSheetCard from "../components/experience-sheet/HorizonPlusCard";
 import NewsCard from "../components/experience-sheet/NewsCard";
+import NewsPlusCard from "../components/experience-sheet/NewsPlusCard";
 
 function ExperienceSheetPage() {
   return (
@@ -43,7 +44,7 @@ function ExperienceSheetPage() {
             <NewsCard />
             <NewsCard />
             <NewsCard />
-            <PlusSheetCard />
+            <NewsPlusCard />
           </SheetHorizonContainer>
         </SheetContainer>
 

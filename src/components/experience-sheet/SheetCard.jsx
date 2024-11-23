@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { IoIosArrowDropright } from "react-icons/io";
+import { useState } from "react";
 
 function SheetCard() {
+  const [isSelected, setIsSelected] = useState(null);
   return (
     <Container>
       <TopContainer>
@@ -25,6 +27,10 @@ export default SheetCard;
 
 const Container = styled.div`
   width: 200px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #246beb;
+  }
 
   background-color: white;
   border: 1px solid var(--color-light-gray);
