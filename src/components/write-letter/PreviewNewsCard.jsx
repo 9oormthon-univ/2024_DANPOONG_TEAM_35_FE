@@ -1,9 +1,18 @@
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa6";
-import useNewsStore from "/src/stores/newsStore";
+import useSelectedCardStore from "/src/stores/selectedCardStore";
 
 function PreviewNewsCard() {
-  const { selectedNewsCards, toggleSelectedNewsCard } = useNewsStore();
+  const { selectedCardId, selectedCards, toggleNewsForCard } =
+    useSelectedCardStore();
+
+  const currentCard = selectedCards[selectedCardId] || {
+    selectedSheets: [],
+    selectedNewsCards: [],
+  };
+
+  const isSelected = (card) =>
+    currentCard.selectedNewsCards.some((selected) => selected.id === card.id);
 
   const cards = [
     {
@@ -47,8 +56,6 @@ function PreviewNewsCard() {
       tags: ["스터디", "개발", "협업"],
     },
   ];
-  const isSelected = (card) =>
-    selectedNewsCards.some((selected) => selected.id === card.id);
 
   return (
     <Background>
@@ -56,7 +63,13 @@ function PreviewNewsCard() {
         <Container
           key={card.id}
           $isSelected={isSelected(card)}
-          onClick={() => toggleSelectedNewsCard(card)}
+          onClick={() => {
+            if (selectedCardId) {
+              toggleNewsForCard(selectedCardId, card);
+            } else {
+              alert("카드를 먼저 선택해주세요!");
+            }
+          }}
         >
           <TopContainer>
             <TitleText>{card.title}</TitleText>

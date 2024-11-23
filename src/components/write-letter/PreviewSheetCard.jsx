@@ -1,9 +1,18 @@
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa6";
-import useSheetStore from "/src/stores/sheetStore";
+import useSelectedCardStore from "/src/stores/selectedCardStore";
 
 function PreviewSheetCard() {
-  const { selectedSheets, toggleSelectedSheet } = useSheetStore();
+  const { selectedCardId, selectedCards, toggleSheetForCard } =
+    useSelectedCardStore();
+
+  const currentCard = selectedCards[selectedCardId] || {
+    selectedSheets: [],
+    selectedNewsCards: [],
+  };
+
+  const isSelected = (card) =>
+    currentCard.selectedSheets.some((selected) => selected.id === card.id);
 
   const cards = [
     {
@@ -48,16 +57,19 @@ function PreviewSheetCard() {
     },
   ];
 
-  const isSelected = (card) =>
-    selectedSheets.some((selected) => selected.id === card.id);
-
   return (
     <Background>
       {cards.map((card) => (
         <Container
           key={card.id}
           $isSelected={isSelected(card)}
-          onClick={() => toggleSelectedSheet(card)}
+          onClick={() => {
+            if (selectedCardId) {
+              toggleSheetForCard(selectedCardId, card);
+            } else {
+              alert("카드를 먼저 선택해주세요!");
+            }
+          }}
         >
           <TopContainer>
             <TitleText>{card.title}</TitleText>
@@ -104,6 +116,7 @@ const Background = styled.div`
     border-radius: 10px;
   }
 `;
+
 const Container = styled.div`
   width: 140px;
   height: 40px;

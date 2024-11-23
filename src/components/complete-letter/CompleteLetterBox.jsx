@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { FaPen } from "react-icons/fa";
-import useLetterStore from "/src/stores/letterStore";
 import useSheetStore from "/src/stores/sheetStore";
 import useNewsStore from "/src/stores/newsStore";
+import useSelectedCardStore from "/src/stores/selectedCardStore";
 import { useState } from "react";
 
 function CompleteLetterBox({
@@ -12,7 +12,7 @@ function CompleteLetterBox({
   text,
   maxLength: initialMaxLength,
 }) {
-  const { clickedLetterId, setClickedLetter } = useLetterStore();
+  const { selectedCardId, setSelectedCard } = useSelectedCardStore();
   const { selectedSheets } = useSheetStore();
   const { selectedNewsCards } = useNewsStore();
   const [textareaValue, setTextareaValue] = useState(text);
@@ -21,7 +21,7 @@ function CompleteLetterBox({
   const [tempMaxLength, setTempMaxLength] = useState(maxLength);
 
   const handleClick = () => {
-    setClickedLetter(id);
+    setSelectedCard(id);
   };
 
   const handleTextareaChange = (e) => {
@@ -48,7 +48,7 @@ function CompleteLetterBox({
     }
   };
 
-  const isActive = clickedLetterId === id;
+  const isActive = selectedCardId === id;
 
   const combinedCards = [...selectedSheets, ...selectedNewsCards].slice(0, 3);
 

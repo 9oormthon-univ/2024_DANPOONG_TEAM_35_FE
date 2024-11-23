@@ -10,6 +10,7 @@ import IndexNavigator from "../components/write-letter/IndexNavigator";
 import DetailPanel from "../components/write-letter/DetailPanel";
 import SubHeader from "../components/write-letter/SubHeader";
 import TitleHeader from "../components/write-letter/TitleHeader";
+import useSelectedCardStore from "/src/stores/selectedCardStore";
 
 function WriteCoverLetterPage() {
   const [letters, setLetters] = useState([
@@ -55,6 +56,7 @@ function WriteCoverLetterPage() {
     },
   ]);
 
+  const { setSelectedCard } = useSelectedCardStore();
   const sectionRefs = useRef([]);
 
   const handleTextChange = (id, newText) => {
@@ -71,6 +73,7 @@ function WriteCoverLetterPage() {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+    setSelectedCard(id);
   };
 
   return (
