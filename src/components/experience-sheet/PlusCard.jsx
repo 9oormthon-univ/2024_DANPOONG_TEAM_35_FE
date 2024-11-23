@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
-import ExperienceModal from "../experienceModal";
+import ExperienceModal from "/src/components/ExperienceModal.jsx";
 
 function PlusSheetCard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
