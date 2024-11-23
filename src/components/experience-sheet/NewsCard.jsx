@@ -1,17 +1,14 @@
 import styled from "styled-components";
 import { IoIosArrowDropright } from "react-icons/io";
 
-function NewsCard() {
+function NewsCard({ title, content }) {
   return (
     <Container>
       <TopContainer>
-        <TitleText>구름톤 유니브 3기</TitleText>
+        <TitleText>{title}</TitleText>
         <RightArrow />
       </TopContainer>
-      <SubText>
-        구름톤 유니브 3기를 진행하면서 AI가 한 번의 경험정리로 자기소개서
-        작성해주는 플랫폼인 자소플에 참여했습니다!
-      </SubText>
+      <SubText>{content}</SubText>
       <TagContainer>
         <TitleTag>리더십</TitleTag>
         <Tag>창의력</Tag>
