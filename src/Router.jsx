@@ -7,8 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import Mypage from "./pages/Mypage";
 import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 import OAuthCallback from "./pages/OAuthCallback";
-import Mypage from "./pages/Mypage";
-import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
+import SignUp from "./pages/SignUp";
 
 const Router = () => {
   return (
@@ -21,8 +20,8 @@ const Router = () => {
           <Route path="/complete-letter" element={<CompleteLetterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="mypage" element={<Mypage />} />
-          <Route path="/oauth/callback" element={<OAuthCallback />} />
-          <Route path="mypage" element={<Mypage />} />
+          <Route path="/oauth/kakao" element={<OAuthCallback />} />
+          <Route path="/signup" element={<SignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>
