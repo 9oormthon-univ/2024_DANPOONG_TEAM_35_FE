@@ -76,7 +76,7 @@ const Container = styled.div`
 `;
 
 const TitleText = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   font-weight: var(--weight-bold);
 `;
 

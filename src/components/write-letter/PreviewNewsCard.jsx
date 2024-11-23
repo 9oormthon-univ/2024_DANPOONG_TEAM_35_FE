@@ -18,6 +18,10 @@ function PreviewNewsCard() {
     },
     { id: 3, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
     { id: 4, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 5, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 6, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 7, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 8, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
   ];
 
   const isSelected = (card) =>
@@ -51,12 +55,30 @@ export default PreviewNewsCard;
 
 const Background = styled.div`
   width: 100%;
+  height: 180px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-`;
+  overflow-y: scroll;
+  box-sizing: border-box;
 
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-gray) var(--color-light-gray);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-blue);
+    border-radius: 10px;
+  }
+`;
 const Container = styled.div`
   width: 140px;
   height: 40px;

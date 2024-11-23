@@ -84,6 +84,7 @@ function WriteCoverLetterPage() {
               ref={(el) => (sectionRefs.current[index] = el)}
             >
               <LetterBox
+                id={letter.id}
                 title={letter.title}
                 placeholder={letter.placeholder}
                 subText={letter.subText}

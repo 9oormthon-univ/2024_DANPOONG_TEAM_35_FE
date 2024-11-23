@@ -9,6 +9,7 @@ export const Background = styled.div`
   margin-left: 80px;
 
   overflow-x: hidden;
+  pointer-events: auto;
 `;
 
 export const WriteContainer = styled.div`

@@ -1,14 +1,23 @@
 import styled from "styled-components";
 import { FaPen } from "react-icons/fa";
+import useLetterStore from "/src/stores/letterStore";
 
-function LetterBox({ title, subText, text, maxLength, onChange }) {
+function LetterBox({ id, title, subText, text, maxLength, onChange }) {
+  const { clickedLetterId, setClickedLetter } = useLetterStore();
+
   const handleChange = (e) => {
     onChange(e.target.value);
   };
 
+  const handleClick = () => {
+    setClickedLetter(id);
+  };
+
+  const isActive = clickedLetterId === id;
+
   return (
-    <Container>
-      <LetterContainer>
+    <Container $isActive={isActive} onClick={handleClick}>
+      <LetterContainer $isActive={isActive}>
         <TitleContainer>
           <TitleText>{title}</TitleText>
           <CountLetter>
@@ -17,7 +26,12 @@ function LetterBox({ title, subText, text, maxLength, onChange }) {
           </CountLetter>
         </TitleContainer>
         <SubText>{subText}</SubText>
-        <TextBox value={text} onChange={handleChange} maxLength={maxLength} />
+        <TextBox
+          value={text}
+          onChange={handleChange}
+          maxLength={maxLength}
+          readOnly
+        />
       </LetterContainer>
     </Container>
   );
@@ -27,8 +41,8 @@ export default LetterBox;
 
 const Container = styled.div`
   display: flex;
-
   padding-left: 180px;
+  cursor: pointer;
 `;
 
 const LetterContainer = styled.div`
@@ -36,11 +50,13 @@ const LetterContainer = styled.div`
   height: 140px;
 
   background-color: var(--color-bg-blue);
-
   border-radius: 12px;
-  border: 0.5px solid var(--color-light-gray);
+  border: 2px solid
+    ${({ $isActive }) => ($isActive ? "var(--color-dark-blue)" : "transparent")};
   padding: 20px;
   margin-bottom: 20px;
+
+  transition: border-color 0.3s ease-in-out;
 `;
 
 const TitleContainer = styled.div`
