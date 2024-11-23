@@ -100,10 +100,10 @@ const SelectSheet = styled.button`
   height: 20px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 15px 0 0 15px;
+  border-radius: 8px 0 0 8px;
   background-color: white;
   color: ${({ $isActive }) =>
-    $isActive ? "var(--color-navy)" : "var(--color-black)"};
+    $isActive ? "var(--color-navy)" : "var(--color-gray)"};
   border-color: ${({ $isActive }) =>
     $isActive ? "var(--color-navy)" : "var(--color-dark-gray)"};
   font-weight: var(--weight-bold);
@@ -115,10 +115,10 @@ const SelectNews = styled.button`
   height: 20px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 0px 15px 15px 0;
+  border-radius: 0 8px 8px 0;
   background-color: white;
   color: ${({ $isActive }) =>
-    $isActive ? "var(--color-navy)" : "var(--color-black)"};
+    $isActive ? "var(--color-navy)" : "var(--color-gray)"};
   border-color: ${({ $isActive }) =>
     $isActive ? "var(--color-navy)" : "var(--color-light-gray)"};
   font-weight: var(--weight-bold);
@@ -139,7 +139,7 @@ const Tag = styled.button`
   height: 20px;
 
   border: 1px solid var(--color-navy);
-  border-radius: 8px;
+  border-radius: 4px;
 
   padding: 7px;
   font-size: 10px;

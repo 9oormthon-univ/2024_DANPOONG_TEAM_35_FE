@@ -1,11 +1,20 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 function TitleHeader() {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  };
+
   return (
     <Container>
       <TitleText>제목</TitleText>
       <InputContainer placeholder="제목을 입력해주세요" />
-      <SubmitButton>저장하기</SubmitButton>
+      <SubmitButton $isClicked={isClicked} onClick={handleClick}>
+        저장하기
+      </SubmitButton>
     </Container>
   );
 }
@@ -26,8 +35,6 @@ const Container = styled.div`
   align-items: center;
   gap: 20px;
   justify-content: center;
-  /* justify-content: start;
-  margin-left: 265px; */
 `;
 
 const TitleText = styled.p`
@@ -44,7 +51,6 @@ const InputContainer = styled.textarea`
   align-items: center;
 
   border: 1px solid white;
-
   border-bottom: 1px solid var(--color-light-gray);
 
   font-size: 12px;
@@ -65,6 +71,10 @@ const SubmitButton = styled.button`
   font-weight: var(--weight-bold);
   font-size: 12px;
 
-  color: var(--color-dark-gray);
-  background-color: var(--color-light-gray);
+  color: ${({ $isClicked }) =>
+    $isClicked ? "var(--color-white)" : "var(--color-white)"};
+  background-color: ${({ $isClicked }) =>
+    $isClicked ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
+
+  cursor: pointer;
 `;

@@ -1,18 +1,17 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function SubHeader() {
   const currentDate = () => {
     const now = new Date();
     const todayYear = now.getFullYear();
-    const todayMonth = now.getMonth() + 1;
-    const todayDate = now.getDate();
+    const todayMonth = String(now.getMonth() + 1).padStart(2, "0");
+    const todayDate = String(now.getDate()).padStart(2, "0");
 
-    const hour = now.getHours();
-    const min = now.getMinutes();
+    const hour = String(now.getHours()).padStart(2, "0");
+    const min = String(now.getMinutes()).padStart(2, "0");
 
-    return (
-      todayYear + "-" + todayMonth + "-" + todayDate + " " + hour + ":" + min
-    );
+    return `${todayYear}-${todayMonth}-${todayDate} ${hour}:${min}`;
   };
 
   return (
@@ -22,7 +21,7 @@ function SubHeader() {
         <Tag># 프론트엔드 개발자</Tag>
       </TagContainer>
       <DateText>{currentDate()}</DateText>
-      <CompleteButton>작성 완료</CompleteButton>
+      <CompleteButton to="/complete-letter">AI 자소서 작성하기</CompleteButton>
     </Container>
   );
 }
@@ -55,10 +54,12 @@ const TagContainer = styled.div`
 
 const Tag = styled.div`
   display: flex;
-  padding: 5px;
+  align-items: center;
+  height: 8px;
+  padding: 8px;
 
-  border: 1px solid var(--color-gray);
-  border-radius: 4px;
+  border: 0.5px solid var(--color-gray);
+  border-radius: 15px;
   background-color: white;
 
   font-size: 12px;
@@ -73,20 +74,22 @@ const DateText = styled.div`
   color: var(--color-dark-gray);
 
   position: fixed;
-  right: 220px;
+  right: 260px;
 `;
 
-const CompleteButton = styled.button`
+const CompleteButton = styled(Link)`
   display: flex;
   align-items: center;
 
-  height: 24px;
+  height: 6px;
   position: fixed;
-  right: 120px;
+  right: 125px;
+  padding: 10px;
 
-  background-color: #d8d8d8;
-  color: var(--color-dark-gray);
+  background-color: var(--color-dark-blue);
+  color: white;
   border-radius: 5px;
+  border: none;
 
   font-size: 12px;
   font-weight: var(--weight-bold);
