@@ -41,11 +41,15 @@ export const SheetContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-left: 80px;
+
   align-items: center;
 `;
 
 export const SheetHorizonContainer = styled.div`
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 
   padding: 10px;
   gap: 20px;

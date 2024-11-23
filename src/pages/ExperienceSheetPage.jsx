@@ -11,6 +11,7 @@ import LetterCard from "../components/experience-sheet/LetterCard";
 import HorizonPlusSheetCard from "../components/experience-sheet/HorizonPlusCard";
 import NewsCard from "../components/experience-sheet/NewsCard";
 import NewsPlusCard from "../components/experience-sheet/NewsPlusCard";
+import experience from "../data/experience";
 
 function ExperienceSheetPage() {
   return (
@@ -19,15 +20,14 @@ function ExperienceSheetPage() {
         <TitleText>경험 시트 목록</TitleText>
         <SheetContainer>
           <SheetHorizonContainer>
-            <SheetCard />
-            <SheetCard />
-            <SheetCard />
-            <SheetCard />
-          </SheetHorizonContainer>
-          <SheetHorizonContainer>
-            <SheetCard />
-            <SheetCard />
-            <SheetCard />
+            {experience.map((data, index) => (
+              <SheetCard
+                key={index}
+                title={data.title}
+                subtext={data.background}
+                tags={data.keywordList.map((keyword) => keyword.toString())}
+              />
+            ))}
             <PlusSheetCard />
           </SheetHorizonContainer>
         </SheetContainer>
