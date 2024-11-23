@@ -20,7 +20,6 @@ const Router = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="mypage" element={<Mypage />} />
           <Route path="/oauth/callback" element={<OAuthCallback />} />
-          <Route path="mypage" element={<Mypage />} />
         </Route>
       </Routes>
     </BrowserRouter>
