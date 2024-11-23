@@ -9,6 +9,7 @@ import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import { ko } from "date-fns/locale";
 import calendarIcon from "../assets/icons/calendar.svg";
+import dropdownIcon from "../assets/icons/dropdown.svg";
 
 export default function ExperienceModal() {
   const [showDateRange, setShowDateRange] = useState(false);
@@ -31,7 +32,9 @@ export default function ExperienceModal() {
         <ModalContainer>
           <TopContainer>
             <TitleContainer>
-              <Category>카테고리</Category>
+              <Category>
+                카테고리 <DropdownIcon src={dropdownIcon} />
+              </Category>
               <TitleInput placeholder="제목을 입력하세요"></TitleInput>
             </TitleContainer>
             <DateBox onClick={toggleDateRange}>
@@ -116,11 +119,20 @@ const TitleContainer = styled.div`
 `;
 
 const Category = styled.div`
+  display: flex;
+  align-items: center;
   padding: 10px;
   font-size: 14px;
   background-color: white;
   border-right: 1px solid #717171;
   outline: none;
+`;
+const DropdownIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  top: 24%;
+  pointer-events: none;
 `;
 
 const TitleInput = styled.input`
