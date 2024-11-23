@@ -6,6 +6,9 @@ import WriteLetterPage from "/src/pages/WriteLetterPage.jsx";
 import LoginPage from "./pages/LoginPage";
 import Mypage from "./pages/Mypage";
 import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
+import OAuthCallback from "./pages/OAuthCallback";
+import Mypage from "./pages/Mypage";
+import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 
 const Router = () => {
   return (
@@ -17,6 +20,8 @@ const Router = () => {
           <Route path="/write-letter" element={<WriteLetterPage />} />
           <Route path="/complete-letter" element={<CompleteLetterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="mypage" element={<Mypage />} />
+          <Route path="/oauth/callback" element={<OAuthCallback />} />
           <Route path="mypage" element={<Mypage />} />
         </Route>
       </Routes>
