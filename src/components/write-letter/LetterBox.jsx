@@ -1,21 +1,26 @@
 import styled from "styled-components";
 import { FaPen } from "react-icons/fa";
-import useLetterStore from "/src/stores/letterStore";
-import useSheetStore from "/src/stores/sheetStore";
-import useNewsStore from "/src/stores/newsStore";
+import useSelectedCardStore from "/src/stores/selectedCardStore";
 
 function LetterBox({ id, title, subText, text, maxLength }) {
-  const { clickedLetterId, setClickedLetter } = useLetterStore();
-  const { selectedSheets } = useSheetStore();
-  const { selectedNewsCards } = useNewsStore();
+  const { selectedCardId, setSelectedCard, selectedCards } =
+    useSelectedCardStore();
 
   const handleClick = () => {
-    setClickedLetter(id);
+    setSelectedCard(id);
   };
 
-  const isActive = clickedLetterId === id;
+  const isActive = selectedCardId === id;
 
-  const combinedCards = [...selectedSheets, ...selectedNewsCards].slice(0, 3);
+  const cardData = selectedCards[id] || {
+    selectedSheets: [],
+    selectedNewsCards: [],
+  };
+
+  const combinedCards = [
+    ...cardData.selectedSheets,
+    ...cardData.selectedNewsCards,
+  ].slice(0, 3);
 
   return (
     <Container $isActive={isActive} onClick={handleClick}>
@@ -29,13 +34,13 @@ function LetterBox({ id, title, subText, text, maxLength }) {
         </TitleContainer>
         <SubText>{subText}</SubText>
 
-        {/* 경험 시트 & 뉴스 카드 최대 3개 표시 */}
+        {/* 선택된 데이터 렌더링 */}
         <SheetCardContainer>
           {combinedCards.length > 0 ? (
             combinedCards.map((card, index) => (
               <Card key={card.id}>
                 <CardTitle>{card.title}</CardTitle>
-                <TagContainer $isSheet={index < selectedSheets.length}>
+                <TagContainer $isSheet={index < cardData.selectedSheets.length}>
                   {card.tags.map((tag, tagIndex) => (
                     <Tag key={tagIndex}>{tag}</Tag>
                   ))}
@@ -43,7 +48,9 @@ function LetterBox({ id, title, subText, text, maxLength }) {
               </Card>
             ))
           ) : (
-            <EmptyMessage>경험시트 또는 뉴스카드를 선택해주세요</EmptyMessage>
+            <EmptyMessage>
+              선택된 경험시트 또는 뉴스카드가 없습니다.
+            </EmptyMessage>
           )}
         </SheetCardContainer>
       </LetterContainer>

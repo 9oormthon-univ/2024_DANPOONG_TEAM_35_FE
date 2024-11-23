@@ -2,10 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import PreviewSheetCard from "./PreviewSheetCard";
 import PreviewNewsCard from "./PreviewNewsCard";
+import useSelectedCardStore from "/src/stores/selectedCardStore";
 
 function SheetListPanel() {
   const [selectedButton, setSelectedButton] = useState("sheet");
   const [selectedTag, setSelectedTag] = useState("");
+  const { selectedCardId, toggleSheetForCard, toggleNewsForCard } =
+    useSelectedCardStore();
 
   const handleButtonClick = (button) => {
     setSelectedButton(button);
@@ -13,6 +16,18 @@ function SheetListPanel() {
 
   const handleTagClick = (tag) => {
     setSelectedTag(tag);
+  };
+
+  const handleSheetClick = (sheet) => {
+    if (selectedCardId) {
+      toggleSheetForCard(selectedCardId, sheet);
+    }
+  };
+
+  const handleNewsClick = (news) => {
+    if (selectedCardId) {
+      toggleNewsForCard(selectedCardId, news);
+    }
   };
 
   return (
@@ -54,9 +69,9 @@ function SheetListPanel() {
       </TagContainer>
       <PreviewSheetList>
         {selectedButton === "sheet" ? (
-          <PreviewSheetCard />
+          <PreviewSheetCard onClick={handleSheetClick} />
         ) : (
-          <PreviewNewsCard />
+          <PreviewNewsCard onClick={handleNewsClick} />
         )}
       </PreviewSheetList>
     </Container>
