@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalContent from "./Modal/ModalContent";
 import ModalBottom from "./Modal/ModalBottom";
 import "react-date-range/dist/styles.css";
@@ -8,10 +8,13 @@ import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import { ko } from "date-fns/locale";
 import calendarIcon from "../assets/icons/calendar.svg";
-import dropdownIcon from "../assets/icons/dropdown.svg";
+import axios from "axios";
 
 export default function ExperienceModal({ onClose }) {
   const [showDateRange, setShowDateRange] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const formatDate = (date) =>
     date ? format(date, "yyyy-MM-dd") : "날짜를 입력해주세요";
   const [state, setState] = useState([
@@ -22,9 +25,36 @@ export default function ExperienceModal({ onClose }) {
     },
   ]);
 
+  const CategoryData = async () => {
+    // const accessToken = localStorage.getItem("accessToken");
+    console.log(localStorage.getItem("accessToken"));
+
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL}/api/category/list`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`,
+        //   },
+        // }
+      );
+      console.log(response);
+      setCategories(response.data.result);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
   const toggleDateRange = () => {
     setShowDateRange((prev) => !prev);
   };
+
+  useEffect(() => {
+    CategoryData();
+  }, []);
+
+  console.log(categories);
+
   return (
     <>
       <Container>
@@ -32,7 +62,17 @@ export default function ExperienceModal({ onClose }) {
           <TopContainer>
             <TitleContainer>
               <Category>
-                카테고리 <DropdownIcon src={dropdownIcon} />
+                {/* <DropdownIcon src={dropdownIcon} /> */}
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)} // 선택된 카테고리 ID 출력
+                >
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
               </Category>
               <TitleInput placeholder="제목을 입력하세요"></TitleInput>
             </TitleContainer>
@@ -70,7 +110,7 @@ export default function ExperienceModal({ onClose }) {
               placeholder="내용을 입력해주세요 (200자 제한)"
             />
           </MainContainer>
-          <ModalBottom onClick={onClose} />
+          <ModalBottom onClose={onClose} onSave={onClose} />
         </ModalContainer>
       </Container>
     </>
@@ -125,13 +165,6 @@ const Category = styled.div`
   background-color: white;
   border-right: 1px solid #717171;
   outline: none;
-`;
-const DropdownIcon = styled.img`
-  width: 20px;
-  height: 20px;
-  margin-left: 8px;
-  top: 24%;
-  pointer-events: none;
 `;
 
 const TitleInput = styled.input`

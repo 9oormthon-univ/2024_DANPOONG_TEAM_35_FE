@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { categories, subcategories } from "../data/job";
 import ModalBtn from "./Modal/ModalBtn.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function JobModal({ onClose }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const navigate = useNavigate();
 
   const handleCategorySelect = (categoryName) => {
     setSelectedCategory(categoryName);
@@ -14,6 +16,10 @@ export default function JobModal({ onClose }) {
 
   const handleSubCategorySelect = (subCategoryName) => {
     setSelectedSubCategory(subCategoryName);
+  };
+
+  const handleNext = () => {
+    navigate("/write-letter");
   };
 
   return (
@@ -70,7 +76,7 @@ export default function JobModal({ onClose }) {
         </ContentWrapper>
         <BtnContainer>
           <ModalBtn text="이전" onClick={onClose} />
-          <ModalBtn text="다음" />
+          <ModalBtn text="다음" onClick={handleNext} />
         </BtnContainer>
       </ModalContainer>
     </Container>

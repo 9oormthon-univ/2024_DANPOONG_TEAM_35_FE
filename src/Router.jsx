@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import Mypage from "./pages/Mypage";
 import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 import OAuthCallback from "./pages/OAuthCallback";
+import Loading from "/src/pages/LoadingPage.jsx";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="mypage" element={<Mypage />} />
           <Route path="/oauth/callback" element={<OAuthCallback />} />
+          <Route path="/loading" element={<Loading />} />
         </Route>
       </Routes>
     </BrowserRouter>

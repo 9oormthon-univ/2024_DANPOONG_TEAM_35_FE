@@ -21,7 +21,7 @@ function SubHeader() {
         <Tag># 프론트엔드 개발자</Tag>
       </TagContainer>
       <DateText>{currentDate()}</DateText>
-      <CompleteButton to="/complete-letter">AI 자소서 작성하기</CompleteButton>
+      <CompleteButton to="/loading">AI 자소서 작성하기</CompleteButton>
     </Container>
   );
 }
