@@ -3,6 +3,8 @@ import Layout from "/src/components/Layout/index.jsx";
 import HomePage from "/src/pages/HomePage.jsx";
 import ExperienceSheetPage from "./pages/ExperienceSheetPage";
 import WriteLetterPage from "/src/pages/WriteLetterPage.jsx";
+import LoginPage from "./pages/LoginPage";
+import Mypage from "./pages/Mypage";
 import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 
 const Router = () => {
@@ -14,6 +16,8 @@ const Router = () => {
           <Route path="/experience-sheet" element={<ExperienceSheetPage />} />
           <Route path="/write-letter" element={<WriteLetterPage />} />
           <Route path="/complete-letter" element={<CompleteLetterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="mypage" element={<Mypage />} />
         </Route>
       </Routes>
     </BrowserRouter>
