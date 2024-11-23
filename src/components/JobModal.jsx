@@ -16,6 +16,23 @@ export default function JobModal({ onClose }) {
     setSelectedSubCategory(subCategoryName);
   };
 
+  const NewsData = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL}/api/industry-info/view/all`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`,
+        //   },
+        // }
+      );
+      console.log(response);
+      setCategories(response.data.result);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
   return (
     <Container>
       <ModalContainer>
