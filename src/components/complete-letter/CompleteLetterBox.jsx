@@ -5,11 +5,20 @@ import useSheetStore from "/src/stores/sheetStore";
 import useNewsStore from "/src/stores/newsStore";
 import { useState } from "react";
 
-function CompleteLetterBox({ id, title, subText, text, maxLength }) {
+function CompleteLetterBox({
+  id,
+  title,
+  subText,
+  text,
+  maxLength: initialMaxLength,
+}) {
   const { clickedLetterId, setClickedLetter } = useLetterStore();
   const { selectedSheets } = useSheetStore();
   const { selectedNewsCards } = useNewsStore();
   const [textareaValue, setTextareaValue] = useState(text);
+  const [isEditingMaxLength, setIsEditingMaxLength] = useState(false);
+  const [maxLength, setMaxLength] = useState(initialMaxLength);
+  const [tempMaxLength, setTempMaxLength] = useState(maxLength);
 
   const handleClick = () => {
     setClickedLetter(id);
@@ -17,8 +26,26 @@ function CompleteLetterBox({ id, title, subText, text, maxLength }) {
 
   const handleTextareaChange = (e) => {
     setTextareaValue(e.target.value);
-    e.target.style.height = "auto"; // Reset height to recalculate
+    e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
+  };
+
+  const handlePenClick = () => {
+    setIsEditingMaxLength(true);
+  };
+
+  const handleMaxLengthChange = (e) => {
+    setTempMaxLength(e.target.value);
+  };
+
+  const handleMaxLengthKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const newMaxLength = parseInt(tempMaxLength, 10);
+      if (!isNaN(newMaxLength) && newMaxLength > 0) {
+        setMaxLength(newMaxLength);
+        setIsEditingMaxLength(false);
+      }
+    }
   };
 
   const isActive = clickedLetterId === id;
@@ -31,8 +58,19 @@ function CompleteLetterBox({ id, title, subText, text, maxLength }) {
         <TitleContainer>
           <TitleText>{title}</TitleText>
           <CountLetter>
-            <PenIcon />
-            {textareaValue.length} / {maxLength}
+            {isEditingMaxLength ? (
+              <MaxLengthInput
+                type="number"
+                value={tempMaxLength}
+                onChange={handleMaxLengthChange}
+                onKeyDown={handleMaxLengthKeyDown}
+              />
+            ) : (
+              <>
+                <PenIcon onClick={handlePenClick} />
+                {textareaValue.length} / {maxLength}
+              </>
+            )}
           </CountLetter>
         </TitleContainer>
         <SubText>{subText}</SubText>
@@ -49,7 +87,7 @@ function CompleteLetterBox({ id, title, subText, text, maxLength }) {
               combinedCards.map((card, index) => (
                 <Card key={card.id}>
                   <CardTitle>{card.title}</CardTitle>
-                  <TagContainer isSheet={index < selectedSheets.length}>
+                  <TagContainer $isSheet={index < selectedSheets.length}>
                     {card.tags.map((tag, tagIndex) => (
                       <Tag key={tagIndex}>{tag}</Tag>
                     ))}
@@ -111,11 +149,24 @@ const SubText = styled.p`
 const CountLetter = styled.p`
   font-size: 12px;
   font-weight: var(--weight-regular);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 const PenIcon = styled(FaPen)`
   width: 8px;
   margin-right: 10px;
+  cursor: pointer;
+`;
+
+const MaxLengthInput = styled.input`
+  width: 40px;
+  font-size: 12px;
+  font-weight: var(--weight-regular);
+  border: 1px solid var(--color-light-gray);
+  border-radius: 4px;
+  text-align: center;
 `;
 
 const SheetCardContainer = styled.div`
@@ -158,8 +209,8 @@ const TagContainer = styled.div`
   font-size: 10px;
 
   :first-of-type {
-    background-color: ${({ isSheet }) =>
-      isSheet ? "var(--color-dark-blue)" : "var(--color-dark-mint)"};
+    background-color: ${({ $isSheet }) =>
+      $isSheet ? "var(--color-dark-blue)" : "var(--color-dark-mint)"};
     color: var(--color-light-blue);
   }
 `;
@@ -207,7 +258,7 @@ const ResultWrapper = styled.div`
   border: 1px solid var(--color-light-gray);
 `;
 
-const Line = styled.p`
+const Line = styled.div`
   width: 100%;
   height: 1px;
   background-color: var(--color-light-gray);

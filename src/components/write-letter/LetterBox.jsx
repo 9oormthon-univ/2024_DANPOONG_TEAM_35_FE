@@ -35,7 +35,7 @@ function LetterBox({ id, title, subText, text, maxLength }) {
             combinedCards.map((card, index) => (
               <Card key={card.id}>
                 <CardTitle>{card.title}</CardTitle>
-                <TagContainer isSheet={index < selectedSheets.length}>
+                <TagContainer $isSheet={index < selectedSheets.length}>
                   {card.tags.map((tag, tagIndex) => (
                     <Tag key={tagIndex}>{tag}</Tag>
                   ))}
@@ -145,8 +145,8 @@ const TagContainer = styled.div`
   font-size: 10px;
 
   :first-of-type {
-    background-color: ${({ isSheet }) =>
-      isSheet ? "var(--color-dark-blue)" : "var(--color-dark-mint)"};
+    background-color: ${({ $isSheet }) =>
+      $isSheet ? "var(--color-dark-blue)" : "var(--color-dark-mint)"};
     color: var(--color-light-blue);
   }
 `;
