@@ -7,8 +7,10 @@ import ModalBottom from "./Modal/ModalBottom";
 import { format } from "date-fns";
 import ModalNewsList from "./Modal/ModalNewsList";
 
-export default function NewsModal() {
+export default function NewsModal({ onClose, onSave }) {
   const todayDate = format(new Date(), "yyyy-MM-dd");
+
+  const onSubmitHandler = async () => {};
   return (
     <>
       <Container>
@@ -51,7 +53,7 @@ export default function NewsModal() {
               content="이 연구는 굉장해 엄청나"
             />
           </MainContainer>
-          <ModalBottom />
+          <ModalBottom onClose={onClose} onSave={onSubmitHandler} />
         </ModalContainer>
       </Container>
     </>
