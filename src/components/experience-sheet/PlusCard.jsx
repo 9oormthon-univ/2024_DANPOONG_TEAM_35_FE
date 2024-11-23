@@ -1,11 +1,21 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
+import ExperienceModal from "../experienceModal";
 
 function PlusSheetCard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   return (
-    <Container>
-      <PlusIcon />
-    </Container>
+    <>
+      <Container onClick={handleModal}>
+        <PlusIcon />
+      </Container>
+      {isModalOpen && <ExperienceModal onClose={handleModal} />}
+    </>
   );
 }
 export default PlusSheetCard;
