@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalContent from "./Modal/ModalContent";
 import ModalBottom from "./Modal/ModalBottom";
 import "react-date-range/dist/styles.css";
@@ -9,9 +9,19 @@ import format from "date-fns/format";
 import { ko } from "date-fns/locale";
 import calendarIcon from "../assets/icons/calendar.svg";
 import dropdownIcon from "../assets/icons/dropdown.svg";
+import axios from "axios";
 
 export default function ExperienceModal({ onClose }) {
   const [showDateRange, setShowDateRange] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [background, setBackground] = useState("");
+  const [solution, setSolution] = useState("");
+  const [result, setResult] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+
   const formatDate = (date) =>
     date ? format(date, "yyyy-MM-dd") : "날짜를 입력해주세요";
   const [state, setState] = useState([
@@ -22,9 +32,67 @@ export default function ExperienceModal({ onClose }) {
     },
   ]);
 
+  const CategoryData = async () => {
+    // const accessToken = localStorage.getItem("accessToken");
+    console.log(localStorage.getItem("accessToken"));
+
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL}/api/category/list`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`,
+        //   },
+        // }
+      );
+      console.log(response);
+      setCategories(response.data.result);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  const onSubmitHandler = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    // const token =
+    //   "eyJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE1LCJpYXQiOjE3MzIzOTM4OTYsImV4cCI6MTczMjM5NzQ5Nn0.5q7lw7DFgxw6nrorjdvtqTdtYAZ7zSZYC9VTl_HRjn4";
+    console.log(localStorage.getItem("accessToken"));
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_API_URL}/api/experience/write`,
+        {
+          title: title,
+          categoryId: selectedCategory,
+          background: background,
+          solution: solution,
+          result: result,
+          startDate: formatDate(state[0].startDate),
+          endDate: formatDate(state[0].endDate),
+          keywordList: [0],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      console.log("작성 성공:", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const toggleDateRange = () => {
     setShowDateRange((prev) => !prev);
   };
+
+  useEffect(() => {
+    CategoryData();
+  }, []);
+
+  console.log(categories);
+
   return (
     <>
       <Container>
@@ -32,9 +100,22 @@ export default function ExperienceModal({ onClose }) {
           <TopContainer>
             <TitleContainer>
               <Category>
-                카테고리 <DropdownIcon src={dropdownIcon} />
+                {/* <DropdownIcon src={dropdownIcon} /> */}
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)} // 선택된 카테고리 ID 출력
+                >
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
               </Category>
-              <TitleInput placeholder="제목을 입력하세요"></TitleInput>
+              <TitleInput
+                placeholder="제목을 입력하세요"
+                onChange={(e) => setTitle(e.target.value)}
+              ></TitleInput>
             </TitleContainer>
             <DateBox onClick={toggleDateRange}>
               {state[0].startDate && state[0].endDate
@@ -60,17 +141,20 @@ export default function ExperienceModal({ onClose }) {
             <ModalContent
               text="문제상황"
               placeholder="내용을 입력해주세요 (200자 제한)"
+              onChange={(e) => setBackground(e.target.value)}
             />
             <ModalContent
               text="해결방법"
               placeholder="내용을 입력해주세요 (200자 제한)"
+              onChange={(e) => setSolution(e.target.value)}
             />
             <ModalContent
               text="결과 (성과, 나의 비중)"
               placeholder="내용을 입력해주세요 (200자 제한)"
+              onChange={(e) => setResult(e.target.value)}
             />
           </MainContainer>
-          <ModalBottom onClick={onClose} />
+          <ModalBottom onClose={onClose} onSave={onSubmitHandler} />
         </ModalContainer>
       </Container>
     </>
