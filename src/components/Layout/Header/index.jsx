@@ -13,10 +13,6 @@ const Header = () => {
         <NavItemContainer path={"/"}>홈</NavItemContainer>
         <NavItemContainer path={"/experience-sheet"}>경험시트</NavItemContainer>
         <NavItemContainer path={"/write-letter"}>자기소개서</NavItemContainer>
-        <NavItemContainer path={"/mypage"}>
-          <UserIcon />
-          마이페이지
-        </NavItemContainer>
         <NavItemContainer path={"/login"}>로그인/회원가입</NavItemContainer>
       </Nav>
     </Container>
