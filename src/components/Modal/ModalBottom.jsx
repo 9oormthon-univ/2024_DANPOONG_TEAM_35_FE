@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ModalBottom() {
+export default function ModalBottom({ onClick }) {
   return (
     <>
       <Keyword>선택 키워드</Keyword>
       <Keyword>추천 키워드</Keyword>
       <BtnContainer>
-        <Button>취소하기</Button>
+        <Button onClick={onClick}>취소하기</Button>
         <Button>저장하기</Button>
       </BtnContainer>
     </>

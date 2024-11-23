@@ -11,7 +11,7 @@ import { ko } from "date-fns/locale";
 import calendarIcon from "../assets/icons/calendar.svg";
 import dropdownIcon from "../assets/icons/dropdown.svg";
 
-export default function ExperienceModal() {
+export default function ExperienceModal({ onClose }) {
   const [showDateRange, setShowDateRange] = useState(false);
   const formatDate = (date) =>
     date ? format(date, "yyyy-MM-dd") : "날짜를 입력해주세요";
@@ -71,7 +71,7 @@ export default function ExperienceModal() {
               placeholder="내용을 입력해주세요 (200자 제한)"
             />
           </MainContainer>
-          <ModalBottom />
+          <ModalBottom onClick={onClose} />
         </ModalContainer>
       </Container>
     </>
