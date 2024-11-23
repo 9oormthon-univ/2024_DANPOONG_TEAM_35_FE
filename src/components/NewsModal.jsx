@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import calendarIcon from "../assets/icons/calendar.svg";
 import searchIcon from "../assets/icons/search.svg";
@@ -9,7 +8,7 @@ import ModalNewsList from "./Modal/ModalNewsList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function NewsModal({ onClose, onSave }) {
+export default function NewsModal({ onClose }) {
   const todayDate = format(new Date(), "yyyy-MM-dd");
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("카테고리");

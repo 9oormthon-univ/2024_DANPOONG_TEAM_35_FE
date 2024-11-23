@@ -11,8 +11,9 @@ export const Background = styled.div`
   pointer-events: auto;
 
   position: relative;
-
   overflow-y: auto;
+
+  background-color: #ffffff; /* 배경을 흰색으로 설정 */
 `;
 
 export const WriteContainer = styled.div`
