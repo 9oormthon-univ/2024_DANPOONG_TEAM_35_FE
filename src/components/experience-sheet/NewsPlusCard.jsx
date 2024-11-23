@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
-import ExperienceModal from "../experienceModal";
+import NewsModal from "../NewsModal";
 
-function PlusSheetCard() {
+function NewsPlusCard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModal = () => {
@@ -14,11 +14,11 @@ function PlusSheetCard() {
       <Container onClick={handleModal}>
         <PlusIcon />
       </Container>
-      {isModalOpen && <ExperienceModal onClose={handleModal} />}
+      {isModalOpen && <NewsModal onClose={handleModal} />}
     </>
   );
 }
-export default PlusSheetCard;
+export default NewsPlusCard;
 
 const Container = styled.div`
   width: 200px;

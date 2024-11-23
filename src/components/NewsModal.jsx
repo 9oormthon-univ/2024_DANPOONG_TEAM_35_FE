@@ -6,19 +6,43 @@ import dropdownIcon from "../assets/icons/dropdown.svg";
 import ModalBottom from "./Modal/ModalBottom";
 import { format } from "date-fns";
 import ModalNewsList from "./Modal/ModalNewsList";
+import { useState } from "react";
 
-export default function NewsModal() {
+export default function NewsModal({ onClose, onSave }) {
   const todayDate = format(new Date(), "yyyy-MM-dd");
+  const [categoryOpen, setCategoryOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("카테고리");
+
+  const toggleCategory = () => {
+    setCategoryOpen((prev) => !prev);
+  };
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setCategoryOpen(false);
+  };
+
+  const onSubmitHandler = async () => {};
   return (
     <>
       <Container>
         <ModalContainer>
           <TopContainer>
             <TitleContainer>
-              <Category>
-                카테고리
+              <Category onClick={toggleCategory}>
+                {selectedCategory}
                 <DropdownIcon src={dropdownIcon} />
               </Category>
+              {categoryOpen && (
+                <CategoryList>
+                  <CategoryItem onClick={() => handleCategorySelect("뉴스")}>
+                    뉴스
+                  </CategoryItem>
+                  <CategoryItem onClick={() => handleCategorySelect("논문")}>
+                    논문
+                  </CategoryItem>
+                </CategoryList>
+              )}
               <SearchInputWrapper>
                 <SearchInput placeholder="검색어를 입력해주세요" />
                 <SearchIcon src={searchIcon} />
@@ -51,7 +75,7 @@ export default function NewsModal() {
               content="이 연구는 굉장해 엄청나"
             />
           </MainContainer>
-          <ModalBottom />
+          <ModalBottom onClose={onClose} onSave={onSubmitHandler} />
         </ModalContainer>
       </Container>
     </>
@@ -106,6 +130,31 @@ const Category = styled.div`
   background-color: white;
   border-right: 1px solid #717171;
   outline: none;
+  cursor: pointer;
+`;
+
+const CategoryList = styled.ul`
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 12.7%;
+  background-color: white;
+  border: 1px solid #717171;
+  border-radius: 8px;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+const CategoryItem = styled.li`
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
 const DropdownIcon = styled.img`
   width: 20px;

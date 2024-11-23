@@ -1,17 +1,29 @@
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
+import SelectModal from "../SelectModal";
+import { useState } from "react";
 
 function HorizonPlusSheetCard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
-    <Container>
-      <PlusIcon />
-    </Container>
+    <>
+      <Container onClick={handleModal}>
+        <PlusIcon />
+      </Container>
+      {isModalOpen && <SelectModal onClose={handleModal} />}
+    </>
   );
 }
 export default HorizonPlusSheetCard;
 
 const Container = styled.div`
   width: 470px;
+  cursor: pointer;
 
   background-color: white;
   border: 1px solid var(--color-light-gray);

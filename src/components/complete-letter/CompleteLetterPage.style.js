@@ -6,11 +6,11 @@ export const Background = styled.div`
 
   display: flex;
   margin-top: 110px;
-  margin-left: 80px;
   overflow-x: hidden;
   pointer-events: auto;
 
   position: relative;
+  justify-content: center;
 
   overflow-y: auto;
 `;
@@ -21,12 +21,4 @@ export const WriteContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const PanelContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-left: 20px;
 `;

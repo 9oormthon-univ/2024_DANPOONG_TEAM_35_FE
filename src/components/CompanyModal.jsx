@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import companyData from "../data/company.js";
 import ModalBtn from "./Modal/ModalBtn";
+import JobModal from "./JobModal";
 
-export default function CompanyModal() {
+export default function CompanyModal({ onClose }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
@@ -14,6 +16,10 @@ export default function CompanyModal() {
   const handleSelectCompany = (company) => {
     setSelectedCompany(company);
     setIsDropdownOpen(false);
+  };
+
+  const handleNext = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -40,11 +46,12 @@ export default function CompanyModal() {
             </Dropdown>
           )}
           <BtnContainer>
-            <ModalBtn text="이전" />
-            <ModalBtn text="다음" />
+            <ModalBtn text="이전" onClick={onClose} />
+            <ModalBtn text="다음" onClick={handleNext} />
           </BtnContainer>
         </ModalContainer>
       </Container>
+      {isModalOpen && <JobModal onClose={() => setIsModalOpen(false)} />}
     </>
   );
 }

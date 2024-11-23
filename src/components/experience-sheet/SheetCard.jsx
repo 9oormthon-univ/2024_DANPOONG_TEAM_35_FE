@@ -25,6 +25,10 @@ export default SheetCard;
 
 const Container = styled.div`
   width: 200px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #246beb;
+  }
 
   background-color: white;
   border: 1px solid var(--color-light-gray);

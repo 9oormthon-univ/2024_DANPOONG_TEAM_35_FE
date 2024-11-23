@@ -16,7 +16,7 @@ export default IndexNavigator;
 
 const Container = styled.div`
   position: fixed;
-  top: 80px;
+  top: 180px;
   left: 120px;
   width: 100px;
   display: flex;

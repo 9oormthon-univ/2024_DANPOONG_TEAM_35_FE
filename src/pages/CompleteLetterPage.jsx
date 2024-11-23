@@ -1,13 +1,10 @@
 import { useState, useRef } from "react";
-import LetterBox from "/src/components/write-letter/LetterBox.jsx";
+import LetterBox from "/src/components/complete-letter/CompleteLetterBox.jsx";
 import {
   Background,
   WriteContainer,
-  PanelContainer,
-} from "/src/components/write-letter/WriteLetterPage.style.js";
-import SheetListPanel from "../components/write-letter/SheetListPanel";
+} from "/src/components/complete-letter/CompleteLetterPage.style.js";
 import IndexNavigator from "../components/write-letter/IndexNavigator";
-import DetailPanel from "../components/write-letter/DetailPanel";
 import SubHeader from "../components/write-letter/SubHeader";
 import TitleHeader from "../components/write-letter/TitleHeader";
 
@@ -25,7 +22,7 @@ function WriteCoverLetterPage() {
       id: 2,
       title: "2. 직무역량",
       subText:
-        "[기업명] 해당 직무 분야에 지원하게 된 이유와 선택 직무에 본인이 적합하다고 판단할 수 있는 이유 및 근거를 제시해주십시오.",
+        "[기업명] 해당 직무 분야에 지원하게 dd 된 이유와 선택 직무에 본인이 적합하다고 판단할 수 있는 이유 및 근거를 제시해주십시오.",
       text: "",
       maxLength: 300,
     },
@@ -97,10 +94,6 @@ function WriteCoverLetterPage() {
             </div>
           ))}
         </WriteContainer>
-        <PanelContainer>
-          <SheetListPanel />
-          <DetailPanel />
-        </PanelContainer>
       </Background>
     </>
   );
