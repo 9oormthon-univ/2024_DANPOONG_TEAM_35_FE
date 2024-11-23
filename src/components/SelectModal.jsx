@@ -5,15 +5,11 @@ import jobIcon from "../assets/icons/job.svg";
 import ModalBtn from "./Modal/ModalBtn";
 import CompanyModal from "./CompanyModal";
 
-export default function SelectModal() {
+export default function SelectModal({ onClose }) {
   const [currentModal, setCurrentModal] = useState("selectModal");
 
   const handleNext = () => {
     setCurrentModal("companyModal");
-  };
-
-  const handleClose = () => {
-    setCurrentModal(null);
   };
 
   return (
@@ -44,7 +40,7 @@ export default function SelectModal() {
               </ETC>
             </MainContainer>
             <BtnContainer>
-              <ModalBtn text="취소" onClick={handleClose} />
+              <ModalBtn text="취소" onClick={onClose} />
               <ModalBtn text="다음" onClick={handleNext} />
             </BtnContainer>
           </ModalContainer>
