@@ -57,10 +57,10 @@ const Tag = styled.div`
   align-items: center;
   height: 8px;
   padding: 8px;
-
+  /* 
   border: 0.5px solid var(--color-gray);
   border-radius: 15px;
-  background-color: white;
+  background-color: white; */
 
   font-size: 12px;
   font-weight: var(--weight-bold);
