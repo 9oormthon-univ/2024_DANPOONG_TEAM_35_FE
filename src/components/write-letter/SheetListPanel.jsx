@@ -69,6 +69,7 @@ const Container = styled.div`
   width: 380px;
 
   position: fixed;
+  top: 150px;
   background-color: var(--color-bg-blue);
   border-radius: 15px;
   border: 0.5px solid var(--color-light-gray);

@@ -34,7 +34,7 @@ const Container = styled.div`
   height: 200px;
 
   position: fixed;
-  top: 430px;
+  top: 480px;
   background-color: var(--color-bg-blue);
   border-radius: 15px;
   border: 1px solid var(--color-light-gray);

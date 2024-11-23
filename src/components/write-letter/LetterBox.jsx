@@ -40,6 +40,8 @@ function LetterBox({ id, title, subText, text, maxLength, onChange }) {
 export default LetterBox;
 
 const Container = styled.div`
+  width: 100%;
+
   display: flex;
   padding-left: 180px;
   cursor: pointer;

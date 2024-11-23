@@ -9,6 +9,7 @@ import SheetListPanel from "../components/write-letter/SheetListPanel";
 import IndexNavigator from "../components/write-letter/IndexNavigator";
 import DetailPanel from "../components/write-letter/DetailPanel";
 import SubHeader from "../components/write-letter/SubHeader";
+import TitleHeader from "../components/write-letter/TitleHeader";
 
 function WriteCoverLetterPage() {
   const [letters, setLetters] = useState([
@@ -75,6 +76,7 @@ function WriteCoverLetterPage() {
   return (
     <>
       <SubHeader />
+      <TitleHeader />
       <Background>
         <IndexNavigator onNavigate={handleNavigate} />
         <WriteContainer>

@@ -5,19 +5,21 @@ export const Background = styled.div`
   height: 100vh;
 
   display: flex;
-  margin-top: 80px;
+  margin-top: 110px;
   margin-left: 80px;
-
   overflow-x: hidden;
   pointer-events: auto;
+
+  position: relative;
+
+  overflow-y: auto;
 `;
 
 export const WriteContainer = styled.div`
   width: 100%;
-
+  height: 100vh;
   display: flex;
   flex-direction: column;
-
   align-items: center;
 `;
 
