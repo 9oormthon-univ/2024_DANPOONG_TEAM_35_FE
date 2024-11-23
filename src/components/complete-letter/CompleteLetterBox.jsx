@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { FaPen } from "react-icons/fa";
-import useSheetStore from "/src/stores/sheetStore";
-import useNewsStore from "/src/stores/newsStore";
 import useSelectedCardStore from "/src/stores/selectedCardStore";
 import { useState } from "react";
 
@@ -12,9 +10,8 @@ function CompleteLetterBox({
   text,
   maxLength: initialMaxLength,
 }) {
-  const { selectedCardId, setSelectedCard } = useSelectedCardStore();
-  const { selectedSheets } = useSheetStore();
-  const { selectedNewsCards } = useNewsStore();
+  const { selectedCardId, setSelectedCard, selectedCards } =
+    useSelectedCardStore();
   const [textareaValue, setTextareaValue] = useState(text);
   const [isEditingMaxLength, setIsEditingMaxLength] = useState(false);
   const [maxLength, setMaxLength] = useState(initialMaxLength);
@@ -50,7 +47,15 @@ function CompleteLetterBox({
 
   const isActive = selectedCardId === id;
 
-  const combinedCards = [...selectedSheets, ...selectedNewsCards].slice(0, 3);
+  const cardData = selectedCards[id] || {
+    selectedSheets: [],
+    selectedNewsCards: [],
+  };
+
+  const combinedCards = [
+    ...cardData.selectedSheets,
+    ...cardData.selectedNewsCards,
+  ].slice(0, 3);
 
   return (
     <Container $isActive={isActive} onClick={handleClick}>
@@ -87,7 +92,9 @@ function CompleteLetterBox({
               combinedCards.map((card, index) => (
                 <Card key={card.id}>
                   <CardTitle>{card.title}</CardTitle>
-                  <TagContainer $isSheet={index < selectedSheets.length}>
+                  <TagContainer
+                    $isSheet={index < cardData.selectedSheets.length}
+                  >
                     {card.tags.map((tag, tagIndex) => (
                       <Tag key={tagIndex}>{tag}</Tag>
                     ))}
@@ -106,6 +113,7 @@ function CompleteLetterBox({
 
 export default CompleteLetterBox;
 
+// 스타일 정의
 const Container = styled.div`
   width: 100%;
   display: flex;
