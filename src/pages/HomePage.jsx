@@ -272,7 +272,7 @@ const HomePage = () => {
           src={homepage3}
           alt="세 번째 섹션 이미지"
           style={{
-            width: "150%", // 이미지의 너비를 조정하세요.
+            width: "100vh", // 이미지의 너비를 조정하세요.
             maxWidth: "1200px", // 최대 너비 설정
           }}
         />

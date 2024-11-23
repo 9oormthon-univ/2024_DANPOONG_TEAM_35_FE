@@ -17,6 +17,7 @@ const OAuthCallback = () => {
       }
 
       try {
+        // 서버로 로그인 요청
         const response = await axios.get(`/callback`, {
           params: {
             code,
@@ -26,9 +27,13 @@ const OAuthCallback = () => {
         const { isSuccess, result } = response.data;
 
         if (isSuccess) {
-          localStorage.setItem("accessToken", result.accessToken);
+          // 닉네임 저장
           localStorage.setItem("nickName", result.nickName);
+
+          // 환영 메시지
           alert(`${result.nickName}님 환영합니다!`);
+
+          // 홈 페이지로 이동
           navigate("/");
         } else {
           alert("로그인 실패: 서버에서 인증을 완료하지 못했습니다.");
@@ -36,7 +41,14 @@ const OAuthCallback = () => {
         }
       } catch (error) {
         console.error("로그인 처리 중 오류 발생:", error);
-        alert("로그인 처리 중 문제가 발생했습니다. 다시 시도해주세요.");
+
+        // 에러 메시지 처리
+        if (error.response?.status === 403) {
+          alert("로그인 실패: 인증 문제가 발생했습니다.");
+        } else {
+          alert("로그인 처리 중 문제가 발생했습니다. 다시 시도해주세요.");
+        }
+
         navigate("/login");
       }
     };
@@ -44,6 +56,7 @@ const OAuthCallback = () => {
     handleKakaoLogin();
   }, [navigate]);
 
+  // 로그인 처리 중 화면에 메시지 표시
   return (
     <div
       style={{
