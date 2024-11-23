@@ -4,6 +4,7 @@ import HomePage from "/src/pages/HomePage.jsx";
 import ExperienceSheetPage from "./pages/ExperienceSheetPage";
 import WriteLetterPage from "/src/pages/WriteLetterPage.jsx";
 import LoginPage from "./pages/LoginPage";
+import OAuthCallback from "./pages/OAuthCallback";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
           <Route path="/write-letter" element={<WriteLetterPage />} />
           <Route path="/sheet-list" element={<ExperienceSheetPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/oauth/callback" element={<OAuthCallback />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,7 @@
 import React from "react";
 import homepage1 from "../assets/icons/homepage1.png";
 import homepage2 from "../assets/icons/homepage2.png";
+import homepage3 from "../assets/icons/homepage3.png";
 
 const HomePage = () => {
   return (
@@ -25,8 +26,8 @@ const HomePage = () => {
           style={{
             position: "absolute",
             top: "20%",
-            left: "10%",
-            width: "30%",
+            left: "15%",
+            width: "23%",
           }}
         />
 
@@ -50,7 +51,7 @@ const HomePage = () => {
             position: "absolute",
             bottom: "20%",
             right: "10%",
-            width: "30%",
+            width: "22%",
           }}
         />
       </div>
@@ -72,7 +73,7 @@ const HomePage = () => {
         <h2
           style={{
             color: "#75A8FF",
-            fontSize: "55px",
+            fontSize: "70px",
             fontWeight: "700",
             marginBottom: "20px",
           }}
@@ -92,7 +93,7 @@ const HomePage = () => {
         <h3
           style={{
             color: "#000",
-            fontSize: "33px",
+            fontSize: "40px",
             fontWeight: "700",
             marginBottom: "100px",
           }}
@@ -140,8 +141,9 @@ const HomePage = () => {
             >
               <p
                 style={{
-                  fontSize: "20px",
+                  fontSize: "19px",
                   color: "#6B6B6B",
+                  margin: "10px",
                 }}
               >
                 자소서 작성에 소요되는 시간
@@ -186,7 +188,7 @@ const HomePage = () => {
                 textAlign: "center",
               }}
             >
-              <p style={{ fontSize: "20px", color: "#6B6B6B" }}>
+              <p style={{ fontSize: "20px", color: "#6B6B6B", margin: "10px" }}>
                 취업사이트 · 첨삭 비용
               </p>
               <p
@@ -229,7 +231,7 @@ const HomePage = () => {
                 textAlign: "center",
               }}
             >
-              <p style={{ fontSize: "20px", color: "#6B6B6B" }}>
+              <p style={{ fontSize: "20px", color: "#6B6B6B", margin: "10px" }}>
                 자소서 작성에 어려움
               </p>
               <p
@@ -255,6 +257,25 @@ const HomePage = () => {
         >
           출처: 2023 사람인 설문조사, NBRI 조사 결과
         </div>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          background: "#00081F",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "0",
+        }}
+      >
+        <img
+          src={homepage3}
+          alt="세 번째 섹션 이미지"
+          style={{
+            width: "150%", // 이미지의 너비를 조정하세요.
+            maxWidth: "1200px", // 최대 너비 설정
+          }}
+        />
       </div>
     </div>
   );
