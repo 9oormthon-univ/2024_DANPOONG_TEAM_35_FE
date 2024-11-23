@@ -7,8 +7,6 @@ import LoginPage from "./pages/LoginPage";
 import Mypage from "./pages/Mypage";
 import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 import OAuthCallback from "./pages/OAuthCallback";
-import Mypage from "./pages/Mypage";
-import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 
 const Router = () => {
   return (
