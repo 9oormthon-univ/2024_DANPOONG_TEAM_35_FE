@@ -5,6 +5,7 @@ import ExperienceSheetPage from "./pages/ExperienceSheetPage";
 import WriteLetterPage from "/src/pages/WriteLetterPage.jsx";
 import LoginPage from "./pages/LoginPage";
 import Mypage from "./pages/Mypage";
+import CompleteLetterPage from "/src/pages/CompleteLetterPage.jsx";
 
 const Router = () => {
   return (
@@ -14,7 +15,7 @@ const Router = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/experience-sheet" element={<ExperienceSheetPage />} />
           <Route path="/write-letter" element={<WriteLetterPage />} />
-          <Route path="/sheet-list" element={<ExperienceSheetPage />} />
+          <Route path="/complete-letter" element={<CompleteLetterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="mypage" element={<Mypage />} />
         </Route>

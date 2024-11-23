@@ -7,21 +7,45 @@ function PreviewSheetCard() {
 
   const cards = [
     {
-      id: 1,
+      id: "sheet-1",
       title: "데이터 분석 워크샵",
       tags: ["워크샵", "리더십", "팀워크"],
     },
     {
-      id: 2,
+      id: "sheet-2",
       title: "대한전기학회 워크샵",
       tags: ["워크샵", "창의성", "문제해결"],
     },
-    { id: 3, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 4, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 5, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 6, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 7, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
-    { id: 8, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    {
+      id: "sheet-3",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "sheet-4",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "sheet-5",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "sheet-6",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "sheet-7",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
+    {
+      id: "sheet-8",
+      title: "프로그래밍 스터디",
+      tags: ["스터디", "개발", "협업"],
+    },
   ];
 
   const isSelected = (card) =>
@@ -64,7 +88,6 @@ const Background = styled.div`
   overflow-y: scroll;
   box-sizing: border-box;
 
-  /* 스크롤바 스타일 */
   scrollbar-width: thin;
   scrollbar-color: var(--color-dark-gray) var(--color-light-gray);
 
@@ -128,6 +151,11 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 6px;
   font-size: 10px;
+
+  :first-of-type {
+    background-color: var(--color-dark-blue);
+    color: var(--color-light-blue);
+  }
 `;
 
 const Tag = styled.div`
@@ -137,4 +165,5 @@ const Tag = styled.div`
   padding: 5px;
   background-color: var(--color-light-blue);
   color: var(--color-navy);
+  white-space: nowrap;
 `;
