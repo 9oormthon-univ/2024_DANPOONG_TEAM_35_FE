@@ -8,7 +8,7 @@ export default function ModalBottom({ onClose, onSave }) {
       <Keyword>추천 키워드</Keyword>
       <BtnContainer>
         <Button onClick={onClose}>취소하기</Button>
-        <Button onClick={onSave}>저장하기</Button>
+        <Button onClick={onClose}>저장하기</Button>
       </BtnContainer>
     </>
   );

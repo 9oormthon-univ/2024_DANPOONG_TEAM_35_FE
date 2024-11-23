@@ -154,7 +154,7 @@ export default function ExperienceModal({ onClose }) {
               onChange={(e) => setResult(e.target.value)}
             />
           </MainContainer>
-          <ModalBottom onClose={onClose} onSave={onSubmitHandler} />
+          <ModalBottom onClose={onClose} onSave={onClose} />
         </ModalContainer>
       </Container>
     </>
