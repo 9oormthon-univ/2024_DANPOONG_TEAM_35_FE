@@ -1,54 +1,44 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
+import useSheetStore from "/src/stores/sheetStore";
 
 function PreviewSheetCard() {
-  const [cards, setCards] = useState([
+  const { selectedSheets, toggleSelectedSheet } = useSheetStore();
+
+  const cards = [
     {
       id: 1,
       title: "데이터 분석 워크샵",
       tags: ["워크샵", "리더십", "팀워크"],
-      $isChecked: false,
     },
     {
       id: 2,
       title: "대한전기학회 워크샵",
       tags: ["워크샵", "창의성", "문제해결"],
-      $isChecked: false,
     },
-    {
-      id: 3,
-      title: "프로그래밍 스터디",
-      tags: ["스터디", "개발", "협업"],
-      $isChecked: false,
-    },
-    {
-      id: 4,
-      title: "프로그래밍 스터디",
-      tags: ["스터디", "개발", "협업"],
-      $isChecked: false,
-    },
-  ]);
+    { id: 3, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 4, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 5, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 6, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 7, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+    { id: 8, title: "프로그래밍 스터디", tags: ["스터디", "개발", "협업"] },
+  ];
 
-  const handleCheckboxClick = (id) => {
-    setCards((prevCards) =>
-      prevCards.map((card) =>
-        card.id === id ? { ...card, $isChecked: !card.$isChecked } : card
-      )
-    );
-  };
+  const isSelected = (card) =>
+    selectedSheets.some((selected) => selected.id === card.id);
 
   return (
     <Background>
       {cards.map((card) => (
-        <Container key={card.id}>
+        <Container
+          key={card.id}
+          $isSelected={isSelected(card)}
+          onClick={() => toggleSelectedSheet(card)}
+        >
           <TopContainer>
             <TitleText>{card.title}</TitleText>
-            <CheckBox onClick={() => handleCheckboxClick(card.id)}>
-              <CheckInput type="checkbox" checked={card.$isChecked} readOnly />
-              <CheckMark $isChecked={card.$isChecked}>
-                {card.$isChecked && <FaCheck />}
-              </CheckMark>
+            <CheckBox $isChecked={isSelected(card)}>
+              {isSelected(card) && <CheckIcon />}
             </CheckBox>
           </TopContainer>
           <TagContainer>
@@ -66,20 +56,42 @@ export default PreviewSheetCard;
 
 const Background = styled.div`
   width: 100%;
+  height: 180px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-
   justify-content: center;
-`;
+  overflow-y: scroll;
+  box-sizing: border-box;
 
+  /* 스크롤바 스타일 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-gray) var(--color-light-gray);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-blue);
+    border-radius: 10px;
+  }
+`;
 const Container = styled.div`
   width: 140px;
   height: 40px;
-  background-color: white;
+  background-color: ${(props) =>
+    props.$isSelected ? "var(--color-light-blue)" : "white"};
   border-radius: 10px;
-  border: 1px solid var(--color-light-gray);
-  padding: 15px;
+  border: 1px solid
+    ${(props) =>
+      props.$isSelected ? "var(--color-dark-blue)" : "var(--color-light-gray)"};
+  padding: 12px;
+  cursor: pointer;
 `;
 
 const TopContainer = styled.div`
@@ -97,35 +109,18 @@ const CheckBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-const CheckInput = styled.input`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-`;
-
-const CheckMark = styled.div`
+  border-radius: 4px;
   width: 14px;
   height: 14px;
-  border: 1px solid var(--color-gray);
-  border-radius: 4px;
-  background-color: ${(props) =>
-    props.$isChecked ? "var(--color-dark-blue)" : "transparent"};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
 
-  svg {
-    font-size: 10px;
-  }
+  border: 1px solid gray;
+  background-color: ${(props) =>
+    props.$isChecked ? "var(--color-dark-blue)" : "white"};
+  color: ${(props) => (props.$isChecked ? "white" : "black")};
+`;
+
+const CheckIcon = styled(FaCheck)`
+  width: 10px;
 `;
 
 const TagContainer = styled.div`
@@ -133,9 +128,6 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 6px;
   font-size: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
 const Tag = styled.div`
