@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { categories, subcategories } from "../data/job";
 import ModalBtn from "./Modal/ModalBtn.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function JobModal({ onClose }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const navigate = useNavigate();
 
   const handleCategorySelect = (categoryName) => {
     setSelectedCategory(categoryName);
@@ -16,21 +18,8 @@ export default function JobModal({ onClose }) {
     setSelectedSubCategory(subCategoryName);
   };
 
-  const NewsData = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_APP_API_URL}/api/industry-info/view/all`
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${accessToken}`,
-        //   },
-        // }
-      );
-      console.log(response);
-      setCategories(response.data.result);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
+  const handleNext = () => {
+    navigate("/write-letter");
   };
 
   return (
@@ -87,7 +76,7 @@ export default function JobModal({ onClose }) {
         </ContentWrapper>
         <BtnContainer>
           <ModalBtn text="이전" onClick={onClose} />
-          <ModalBtn text="다음" />
+          <ModalBtn text="다음" onClick={handleNext} />
         </BtnContainer>
       </ModalContainer>
     </Container>
