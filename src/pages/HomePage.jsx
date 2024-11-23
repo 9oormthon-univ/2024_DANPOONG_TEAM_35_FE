@@ -1,8 +1,5 @@
-import React from "react";
-import homepage0 from "../assets/icons/homepage0.png";
-import homepage1 from "../assets/icons/homepage1.png";
-import homepage2 from "../assets/icons/homepage2.png";
 import homepage3 from "../assets/icons/homepage3.png";
+import homepageGif from "../assets/icons/homepage00.Gif";
 
 const HomePage = () => {
   return (
@@ -10,52 +7,19 @@ const HomePage = () => {
       {/* 첫 번째 섹션 */}
       <div
         style={{
-          width: "100%",
-          height: "100vh",
-          backgroundImage: `url(${homepage0})`,
-          backgroundSize: "cover", // 배경 이미지를 화면에 맞게 조정
-          backgroundPosition: "center", // 배경 이미지의 위치를 중앙으로 설정
-          backgroundRepeat: "no-repeat", // 이미지를 반복하지 않도록 설정
           position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "hidden",
+          width: "100%",
+          overflow: "hidden", // 넘치는 부분 숨기기
         }}
       >
-        {/* 왼쪽 말풍선 */}
         <img
-          src={homepage1}
-          alt="말풍선 1"
+          src={homepageGif}
+          alt="Animated Section"
           style={{
-            position: "absolute",
-            top: "20%",
-            left: "20%",
-            width: "24%",
-          }}
-        />
-
-        {/* 중앙 텍스트 */}
-        <h1
-          style={{
-            fontSize: "4rem",
-            fontWeight: "bold",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-          보.. 브류...
-        </h1>
-
-        {/* 오른쪽 말풍선 */}
-        <img
-          src={homepage2}
-          alt="말풍선 2"
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            right: "18%",
-            width: "23%",
+            width: "100%",
+            objectFit: "cover", // 비율 유지하며 화면 채우기
+            margin: "0",
+            padding: "0",
           }}
         />
       </div>
@@ -276,8 +240,8 @@ const HomePage = () => {
           src={homepage3}
           alt="세 번째 섹션 이미지"
           style={{
-            width: "100vh", // 이미지의 너비를 조정하세요.
-            maxWidth: "1200px", // 최대 너비 설정
+            width: "100%", // 이미지의 너비를 조정하세요.
+            // 최대 너비 설정
           }}
         />
       </div>
